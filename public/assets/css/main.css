@@ -1,0 +1,100 @@
+:root {
+    /* Primary Color Palette - Formal & Academic */
+    --color-primary: #00503a; /* Deep Emerald Green */
+    --color-primary-light: #006a4e;
+    --color-secondary: #1a3a5f; /* Dark Navy Blue */
+    --color-accent: #8b0000; /* Deep Maroon for urgency/important notices */
+    
+    /* Backgrounds & Surfaces */
+    --color-bg-base: #f8f9fa;
+    --color-bg-surface: #ffffff;
+    --color-bg-alt: #f1f3f5;
+    
+    /* Text Colors */
+    --color-text-main: #212529;
+    --color-text-muted: #6c757d;
+    --color-text-on-primary: #ffffff;
+    
+    /* Borders & Dividers */
+    --border-color: #dee2e6;
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+    
+    /* Typography Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+}
+
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Hind Siliguri', sans-serif;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .headline {
+    font-family: 'Manrope', 'Hind Siliguri', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Common Layout Components */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section {
+    padding: var(--spacing-lg) 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-accent);
+}
+
+/* Helper Classes */
+.bg-white { background-color: var(--color-bg-surface); }
+.bg-alt { background-color: var(--color-bg-alt); }
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.shadow-md { box-shadow: var(--shadow-md); }
+
+/* Functional Selectors for CodeIgniter Integration */
+.ci-partial-header {}
+.ci-partial-footer {}
