@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+    environment:
+      - APP_NAME=ProttashaAcademic
+      - CI_ENVIRONMENT=development
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
