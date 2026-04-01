@@ -1,0 +1,8 @@
+/vendor/
+/writable/
+/.env
+/public/index.php/
+*.db
+/tests/
+/node_modules/
+/app/Config/Database.php.bak
