@@ -48,7 +48,23 @@ class Home extends BaseController
 
     public function results()
     {
-        return $this->render('results', ['title' => 'Results Archive - Prottasha Academic']);
+        $resultModel = new \App\Models\ResultModel();
+
+        $allResults = $resultModel->orderBy('year', 'DESC')->findAll();
+
+        $data['boardResults'] = array_filter($allResults, function ($r) {
+            return $r['exam_type'] === 'board';
+        });
+
+        $data['internalResults'] = array_filter($allResults, function ($r) {
+            return $r['exam_type'] === 'internal';
+        });
+
+        // Extract filters for the UI
+        $data['years'] = array_unique(array_column($allResults, 'year'));
+        $data['classes'] = array_unique(array_column($allResults, 'class_category'));
+
+        return $this->render('results', array_merge($data, ['title' => 'Results Archive - Prottasha Academic']));
     }
 
     public function routines()
@@ -60,7 +76,7 @@ class Home extends BaseController
     {
         $galleryModel = new \App\Models\GalleryModel();
         $data['images'] = $galleryModel->orderBy('created_at', 'DESC')->findAll();
-        
+
         // Group by category for filtering if needed
         $data['categories'] = array_unique(array_column($data['images'], 'category'));
 

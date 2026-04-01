@@ -12,7 +12,7 @@
         <!-- Category Filter -->
         <div class="flex flex-wrap gap-2" id="gallery-filters">
             <button data-filter="all" class="filter-btn px-6 py-2 rounded-full border-2 border-primary bg-primary text-white text-xs font-black uppercase tracking-widest transition-all">All</button>
-            <?php foreach($categories as $cat): ?>
+            <?php foreach ($categories as $cat): ?>
                 <button data-filter="<?= esc($cat) ?>" class="filter-btn px-6 py-2 rounded-full border-2 border-surface-container text-on-surface-variant hover:border-primary hover:text-primary text-xs font-black uppercase tracking-widest transition-all"><?= esc($cat) ?></button>
             <?php endforeach; ?>
         </div>
@@ -27,7 +27,7 @@
             <p class="text-on-surface-variant font-bold uppercase tracking-widest">No photos found in the gallery.</p>
         </div>
     <?php else: ?>
-        <?php foreach($images as $img): ?>
+        <?php foreach ($images as $img): ?>
             <div class="gallery-item group relative aspect-square rounded-3xl overflow-hidden bg-emerald-950 shadow-xl border-4 border-white transition-all duration-500" data-category="<?= esc($img['category']) ?>">
                 <img src="<?= esc($img['image_url']) ?>" alt="<?= esc($img['title']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-90 group-hover:opacity-100">
                 
