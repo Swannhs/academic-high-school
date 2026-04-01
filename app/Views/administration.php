@@ -1,182 +1,177 @@
 <!-- Page Banner & Breadcrumbs -->
-<section class="academic-gradient py-24 px-8">
-<div class="max-w-7xl mx-auto">
-<nav class="flex items-center gap-2 text-primary-fixed mb-4 text-sm font-label tracking-widest uppercase">
-<a class="hover:text-white transition-colors" href="<?= base_url() ?>">Home</a>
-<span class="material-symbols-outlined text-xs">chevron_right</span>
-<span class="text-white">Administration</span>
-</nav>
-<h1 class="text-5xl md:text-6xl font-headline font-extrabold text-white tracking-tight leading-tight">
-                    Institutional <br/><span class="text-tertiary-fixed">Leadership</span>
-</h1>
-<p class="mt-6 text-on-primary-container max-w-2xl text-lg leading-relaxed opacity-90">
-                    Our administrative framework is built on a foundation of transparency, academic excellence, and a commitment to nurturing future global citizens.
-                </p>
-</div>
+<section class="relative h-[320px] flex items-center overflow-hidden bg-primary">
+    <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover grayscale brightness-50 opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKoq1YoSXwMsuMWPcavhTqHgQDkBlbQ9cp-YXk2UrN_tGURvEp7Ovof3KRZXJTW0WdaoziF6Mc39JB6Fa3-Fc2RNGqwqPIqIXyBCtq6oItUSSnretdhiOr6qeYP6UGFNwbDqH5Alx4MjAjF0jK9_C-xMnHDrKeYF915FXYhzZbus--JJykzeQUN6fVMei6j_2r4Wib1ljXPbOaT1NC3-LJ6SFsumk3OjJLKkIEqmIdHDAKLj9OZocq5THL2f6tu48LZ6wUQo8zCg" alt="Institutional Leadership">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full">
+        <nav class="flex items-center gap-2 text-white/70 mb-6 text-[10px] uppercase font-black tracking-[0.2em]">
+            <a class="hover:text-emerald-400 transition-colors" href="<?= base_url() ?>">Home</a>
+            <span class="material-symbols-outlined text-xs">chevron_right</span>
+            <span class="text-emerald-400">Administration</span>
+        </nav>
+        <h1 class="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter leading-none mb-6">
+            Institutional <br/><span class="text-emerald-400">Leadership</span>
+        </h1>
+        <p class="text-white/70 max-w-2xl text-lg font-medium leading-relaxed">
+            Our administrative framework is built on a foundation of transparency, academic excellence, and a commitment to nurturing future global citizens.
+        </p>
+    </div>
 </section>
+
 <!-- Executive Leadership Section -->
 <section class="max-w-7xl mx-auto px-8 py-28">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<!-- Principal Card -->
-<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 flex flex-col md:flex-row gap-10 border-l-4 border-tertiary shadow-[0_8px_24px_rgba(0,33,22,0.06)] relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-<span class="material-symbols-outlined text-9xl">format_quote</span>
-</div>
-<div class="w-full md:w-64 h-80 rounded-lg overflow-hidden shrink-0">
-<img alt="Head Teacher Portrait" class="w-full h-full object-cover" data-alt="Professional portrait of a mature male principal in a formal suit against a clean architectural background with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDinoPoSj16DP2vqSGZWVbfidvIc6HPE4QKpFSzZXEGHLN8LAGwxZedla-EPWs_D44hBJuAAgBZENQgNFe5QCLwTZsodZ-fhoKguFO_lFrFZeQ1aBUM1RD0x_DSYlTCSCy2V7xhU8Um0UhjmFwoFI36uQugoweSwSEF-_kFGIGZ8aIpPpJ4tcwwiPEcuZ3R9lt-55qBaVQzeHMqJXxFxJRKOIUK98Rr6VzcF7aJFklDyrjXPppCwvU3Vgvut0ksk31DuDHM9ftFFw"/>
-</div>
-<div class="flex flex-col justify-center">
-<span class="text-tertiary font-label text-[0.6875rem] font-bold tracking-[0.05rem] uppercase mb-2">Principal &amp; Head Teacher</span>
-<h2 class="text-3xl font-headline font-extrabold text-on-surface mb-4">Dr. Mohammad Abdus Salam</h2>
-<p class="text-on-surface-variant italic leading-relaxed mb-6">
-                            "Education is the most powerful weapon which you can use to change the world. At Prottasha, we strive to equip our students with not just knowledge, but the character to lead with integrity."
-                        </p>
-<div class="flex gap-4">
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg text-sm font-semibold shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">mail</span>
-                                Contact Principal
-                            </button>
-</div>
-</div>
-</div>
-<!-- Assistant Head Teacher -->
-<div class="lg:col-span-5 bg-surface-container-low rounded-xl p-8 h-full flex flex-col justify-between">
-<div>
-<div class="w-32 h-32 rounded-full overflow-hidden mb-6 border-2 border-white shadow-md">
-<img alt="Assistant Head Teacher Portrait" class="w-full h-full object-cover" data-alt="Professional portrait of a female academic leader with a warm smile, wearing business attire, soft blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX2Gm98meuKsoHrzhHPP_BrzfHnFDUDB7mOGysR3XbA20a08fLRuM4214as3f3IbjGqJ8eYwOycNS9Rz3jV8soeCzcizz2DzpjnA-YYYguaOIMg-i9NvdwYEZkSvZGEAMzuv0LVIJOF9VHTBs_1SRsTGr6nf1Dwg63-mJ-IhldIkeC9eC2apqMs8f5FdsDoYDDZDbTMJvb_8PQ-ccuNthNsKA_oDMby-orurvzBAO8uNGakTVc97mzyQaTMYyvvMkW1JKWTD7gEA"/>
-</div>
-<span class="text-primary font-label text-[0.6875rem] font-bold tracking-[0.05rem] uppercase mb-1 block">Assistant Head Teacher</span>
-<h3 class="text-2xl font-headline font-bold text-on-surface mb-4">Ms. Rabeya Khatun</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">
-                            Overseeing academic standards and student welfare since 2015. Dedicated to fostering a culture of curiosity and discipline.
-                        </p>
-</div>
-<div class="mt-8 pt-6 border-t border-outline-variant/15 flex items-center gap-4 text-primary font-semibold text-sm">
-<a class="hover:underline" href="#">View Bio</a>
-<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
-<a class="hover:underline" href="#">Internal Portal</a>
-</div>
-</div>
-</div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <!-- Principal Card -->
+        <div class="lg:col-span-12 bg-white rounded-[40px] p-10 md:p-16 flex flex-col md:flex-row gap-12 border-b-8 border-accent shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+                <span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">school</span>
+            </div>
+            
+            <div class="w-full md:w-[320px] aspect-[3/4] rounded-[32px] overflow-hidden shrink-0 border-8 border-slate-50 shadow-inner group-hover:border-emerald-50 transition-all duration-500">
+                <img alt="Head Teacher Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDinoPoSj16DP2vqSGZWVbfidvIc6HPE4QKpFSzZXEGHLN8LAGwxZedla-EPWs_D44hBJuAAgBZENQgNFe5QCLwTZsodZ-fhoKguFO_lFrFZeQ1aBUM1RD0x_DSYlTCSCy2V7xhU8Um0UhjmFwoFI36uQugoweSwSEF-_kFGIGZ8aIpPpJ4tcwwiPEcuZ3R9lt-55qBaVQzeHMqJXxFxJRKOIUK98Rr6VzcF7aJFklDyrjXPppCwvU3Vgvut0ksk31DuDHM9ftFFw"/>
+            </div>
+            
+            <div class="flex flex-col justify-center relative z-10 flex-1">
+                <div class="inline-block mb-4">
+                    <span class="text-accent font-black text-[10px] tracking-[0.3em] uppercase bg-red-50 px-4 py-1.5 rounded-full border border-red-100">Principal & Head Teacher</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black font-headline text-slate-900 mb-6 tracking-tighter">Dr. Mohammad <br class="hidden lg:block">Abdus Salam</h2>
+                <div class="bg-slate-50 p-8 rounded-3xl mb-8 border-l-4 border-accent relative">
+                    <span class="material-symbols-outlined text-accent/20 text-6xl absolute -top-8 right-4">format_quote</span>
+                    <p class="text-slate-700 italic text-xl leading-relaxed font-serif">
+                        "Education is the most powerful weapon which you can use to change the world. At Prottasha, we strive to equip our students with not just knowledge, but the character to lead with integrity."
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-primary text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-primary/20 hover:brightness-110 active:scale-95 transition-all flex items-center gap-3">
+                        <span class="material-symbols-outlined text-lg">mail</span>
+                        Contact Principal
+                    </button>
+                    <button class="bg-slate-900 text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-slate-900/10 hover:bg-slate-800 active:scale-95 transition-all flex items-center gap-3">
+                        <span class="material-symbols-outlined text-lg">description</span>
+                        Full Academic Bio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+<!-- Assistant Leadership -->
+<section class="bg-slate-50 py-32 px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-center">
+        <div class="w-full md:w-1/3">
+             <div class="relative group">
+                <div class="absolute -inset-4 bg-primary/10 rounded-[48px] rotate-3 group-hover:rotate-0 transition-transform duration-700"></div>
+                <div class="relative rounded-[40px] overflow-hidden aspect-[4/5] shadow-2xl border-4 border-white">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX2Gm98meuKsoHrzhHPP_BrzfHnFDUDB7mOGysR3XbA20a08fLRuM4214as3f3IbjGqJ8eYwOycNS9Rz3jV8soeCzcizz2DzpjnA-YYYguaOIMg-i9NvdwYEZkSvZGEAMzuv0LVIJOF9VHTBs_1SRsTGr6nf1Dwg63-mJ-IhldIkeC9eC2apqMs8f5FdsDoYDDZDbTMJvb_8PQ-ccuNthNsKA_oDMby-orurvzBAO8uNGakTVc97mzyQaTMYyvvMkW1JKWTD7gEA" alt="Assistant Principal">
+                </div>
+             </div>
+        </div>
+        <div class="flex-1">
+             <span class="text-primary font-black text-[10px] tracking-[0.3em] uppercase mb-4 block">Executive Support</span>
+             <h3 class="text-4xl md:text-5xl font-black font-headline text-slate-800 mb-6 tracking-tight">Ms. Rabeya Khatun</h3>
+             <p class="text-xl text-slate-600 mb-10 leading-relaxed font-medium">
+                Overseeing academic standards and student welfare since 2015. Dedicated to fostering a culture of curiosity, academic grit, and communal discipline.
+             </p>
+             <div class="flex gap-4">
+                 <button class="bg-white border-2 border-slate-100 text-slate-800 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Internal Bio</button>
+                 <button class="bg-white border-2 border-slate-100 text-slate-800 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Support Desk</button>
+             </div>
+        </div>
+    </div>
+</section>
+
 <!-- Managing Committee -->
-<section class="bg-surface-container-low py-28 px-8">
-<div class="max-w-7xl mx-auto">
-<div class="mb-16">
-<span class="text-tertiary font-label text-[0.6875rem] font-bold tracking-[0.05rem] uppercase mb-2 block">The Governing Body</span>
-<h2 class="text-4xl font-headline font-extrabold text-on-surface">Managing Committee</h2>
-<div class="h-1 w-20 bg-tertiary mt-4"></div>
-</div>
-<!-- Bento Grid Layout -->
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-<!-- Chairman -->
-<div class="md:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300">
-<div class="flex gap-6 items-center">
-<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
-<img alt="Committee Member" class="w-full h-full object-cover" data-alt="Middle-aged man in formal attire, clean professional studio headshot for institutional board member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiMa6D_blfOLfu2BEqBOx9lGaJiIfnwwIKTd7hWwYEd5mCvDaZVWI_EET3i6mIRaKnyRmnriCkoI2pv86Pi1GvnMrQMs2Mv-PD-DezUAK1KVfyQc2A9Feu9QIPJ0LhmnvDjOxYPFsUPkYXocn-29u6Ihnk0UBWwOVSxIkuFwVnpPiW7lfH95BiqAoP7XaemCoVE658rCjY3R7QGBCuNBvN0nGzJvqOptU2MxpH4QkPYPEB5-PeIAXeOq5GC8yaPuQwur7qEeb32A"/>
-</div>
-<div>
-<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Chairman</span>
-<h4 class="text-xl font-headline font-bold text-on-surface mt-1">Mr. Shahidul Islam</h4>
-<p class="text-on-surface-variant text-xs mt-1">Former Secretary, Ministry of Education</p>
-</div>
-</div>
-</div>
-<!-- Other Members -->
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300 border-l-2 border-primary/20">
-<span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">Secretary</span>
-<h4 class="text-lg font-headline font-bold text-on-surface mt-1">Anwar Hossain</h4>
-<p class="text-on-surface-variant text-xs">Academic Consultant</p>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300 border-l-2 border-primary/20">
-<span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">Member</span>
-<h4 class="text-lg font-headline font-bold text-on-surface mt-1">Dr. Farhana Yasmin</h4>
-<p class="text-on-surface-variant text-xs">Professor, DU</p>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300 border-l-2 border-primary/20">
-<span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">Guardian Rep</span>
-<h4 class="text-lg font-headline font-bold text-on-surface mt-1">Kazi Mahtab</h4>
-<p class="text-on-surface-variant text-xs">Advocate, Supreme Court</p>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300 border-l-2 border-primary/20">
-<span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">Teacher Rep</span>
-<h4 class="text-lg font-headline font-bold text-on-surface mt-1">Mokhlesur Rahman</h4>
-<p class="text-on-surface-variant text-xs">Senior Faculty</p>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300 border-l-2 border-primary/20">
-<span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">Member</span>
-<h4 class="text-lg font-headline font-bold text-on-surface mt-1">Begum Rokeya</h4>
-<p class="text-on-surface-variant text-xs">Social Worker</p>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:translate-y-[-4px] transition-transform duration-300 border-l-2 border-primary/20">
-<span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">Donor Member</span>
-<h4 class="text-lg font-headline font-bold text-on-surface mt-1">SM Ahsan</h4>
-<p class="text-on-surface-variant text-xs">Industrialist</p>
-</div>
-</div>
-</div>
+<section class="bg-white py-32 px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-24">
+            <span class="text-accent font-black text-[10px] tracking-[0.3em] uppercase bg-red-50 px-4 py-1.5 rounded-full border border-red-100">Governance & Strategy</span>
+            <h2 class="text-5xl font-black font-headline text-slate-900 mt-6 tracking-tighter">Managing Committee</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Chairman -->
+            <div class="md:col-span-2 bg-slate-900 rounded-[40px] p-10 flex flex-col md:flex-row gap-10 items-center border border-white/5 shadow-2xl relative group overflow-hidden">
+                <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="w-32 h-32 rounded-[24px] overflow-hidden shrink-0 border-4 border-white/10 group-hover:rotate-6 transition-transform">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiMa6D_blfOLfu2BEqBOx9lGaJiIfnwwIKTd7hWwYEd5mCvDaZVWI_EET3i6mIRaKnyRmnriCkoI2pv86Pi1GvnMrQMs2Mv-PD-DezUAK1KVfyQc2A9Feu9QIPJ0LhmnvDjOxYPFsUPkYXocn-29u6Ihnk0UBWwOVSxIkuFwVnpPiW7lfH95BiqAoP7XaemCoVE658rCjY3R7QGBCuNBvN0nGzJvqOptU2MxpH4QkPYPEB5-PeIAXeOq5GC8yaPuQwur7qEeb32A" alt="Chairman">
+                </div>
+                <div class="relative z-10 flex-1">
+                    <span class="bg-emerald-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest inline-block mb-3">Chairman</span>
+                    <h4 class="text-3xl font-black font-headline text-white mb-2">Mr. Shahidul Islam</h4>
+                    <p class="text-slate-400 font-medium">Former Secretary, Ministry of Education, Bangladesh</p>
+                </div>
+            </div>
+            
+            <!-- Standard Members -->
+            <?php 
+                $members = [
+                    ['name' => 'Anwar Hossain', 'role' => 'Secretary', 'desc' => 'Academic Consultant'],
+                    ['name' => 'Dr. Farhana Yasmin', 'role' => 'Member', 'desc' => 'Professor, DU'],
+                    ['name' => 'Kazi Mahtab', 'role' => 'Guardian Rep', 'desc' => 'Advocate, Supreme Court'],
+                    ['name' => 'Alhaj SM Ahsan', 'role' => 'Donor Member', 'desc' => 'Industrialist']
+                ];
+                foreach($members as $m): 
+            ?>
+            <div class="bg-white p-8 rounded-[32px] border border-slate-100 hover:border-primary/20 hover:shadow-xl transition-all group">
+                <span class="text-primary font-black text-[9px] uppercase tracking-widest mb-2 block"><?= $m['role'] ?></span>
+                <h4 class="text-xl font-black text-slate-800 mb-1 group-hover:text-primary transition-colors"><?= $m['name'] ?></h4>
+                <p class="text-slate-500 text-[11px] font-bold uppercase tracking-tight"><?= $m['desc'] ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </section>
-<!-- Administrative Staff -->
-<section class="max-w-7xl mx-auto px-8 py-28">
-<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-<div>
-<span class="text-primary font-label text-[0.6875rem] font-bold tracking-[0.05rem] uppercase mb-2 block">Operational Core</span>
-<h2 class="text-4xl font-headline font-extrabold text-on-surface">Administrative Staff</h2>
-</div>
-<div class="bg-surface-container-high rounded-lg flex p-1">
-<button class="px-6 py-2 bg-primary text-on-primary rounded-md text-sm font-bold">Office Team</button>
-<button class="px-6 py-2 text-on-surface-variant hover:text-primary transition-colors text-sm font-bold">Support Staff</button>
-</div>
-</div>
-<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,33,22,0.06)]">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-primary text-on-primary font-label text-[0.6875rem] uppercase tracking-widest">
-<th class="px-8 py-4 font-bold">Employee Name</th>
-<th class="px-8 py-4 font-bold">Designation</th>
-<th class="px-8 py-4 font-bold">Department</th>
-<th class="px-8 py-4 font-bold">Contact Extension</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/10 text-sm">
-<tr class="hover:bg-surface-container-low transition-colors">
-<td class="px-8 py-5 font-bold text-on-surface">Md. Nasir Uddin</td>
-<td class="px-8 py-5 text-on-surface-variant">Office Superintendent</td>
-<td class="px-8 py-5 text-on-surface-variant">General Office</td>
-<td class="px-8 py-5 font-mono text-tertiary">#101</td>
-</tr>
-<tr class="hover:bg-surface-container-low transition-colors">
-<td class="px-8 py-5 font-bold text-on-surface">Farida Begum</td>
-<td class="px-8 py-5 text-on-surface-variant">Accounts Officer</td>
-<td class="px-8 py-5 text-on-surface-variant">Finance</td>
-<td class="px-8 py-5 font-mono text-tertiary">#102</td>
-</tr>
-<tr class="hover:bg-surface-container-low transition-colors">
-<td class="px-8 py-5 font-bold text-on-surface">Jasim Ahmed</td>
-<td class="px-8 py-5 text-on-surface-variant">Senior Clerk</td>
-<td class="px-8 py-5 text-on-surface-variant">Registry</td>
-<td class="px-8 py-5 font-mono text-tertiary">#104</td>
-</tr>
-<tr class="hover:bg-surface-container-low transition-colors">
-<td class="px-8 py-5 font-bold text-on-surface">Sabina Yeasmin</td>
-<td class="px-8 py-5 text-on-surface-variant">IT Coordinator</td>
-<td class="px-8 py-5 text-on-surface-variant">Information Systems</td>
-<td class="px-8 py-5 font-mono text-tertiary">#110</td>
-</tr>
-<tr class="hover:bg-surface-container-low transition-colors">
-<td class="px-8 py-5 font-bold text-on-surface">Abdul Karim</td>
-<td class="px-8 py-5 text-on-surface-variant">Head Librarian</td>
-<td class="px-8 py-5 text-on-surface-variant">Library Resources</td>
-<td class="px-8 py-5 font-mono text-tertiary">#201</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="mt-12 p-8 bg-surface-container rounded-xl flex items-center gap-6 border-l-4 border-primary">
-<span class="material-symbols-outlined text-primary text-4xl">info</span>
-<div>
-<h5 class="text-on-surface font-bold">Staff Directory Notice</h5>
-<p class="text-on-surface-variant text-sm mt-1">For direct inquiries related to student transcripts or admission paperwork, please visit the General Office between 9:00 AM and 2:00 PM on weekdays.</p>
-</div>
-</div>
+
+<!-- Administrative Staff Table -->
+<section class="max-w-7xl mx-auto px-8 py-28 relative">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div>
+            <span class="text-primary font-black tracking-[0.3em] uppercase text-[10px] bg-emerald-50 px-3 py-1 rounded-full">Support Infrastructure</span>
+            <h2 class="text-4xl md:text-5xl font-black font-headline text-slate-900 mt-4 tracking-tighter">Operational Excellence</h2>
+        </div>
+        <div class="bg-slate-100 rounded-2xl p-1.5 flex shadow-inner">
+            <button class="px-8 py-3 bg-white text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-sm">Administration</button>
+            <button class="px-8 py-3 text-slate-500 hover:text-primary transition-all text-[10px] font-black uppercase tracking-widest">Support Core</button>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-900 text-white">
+                        <th class="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em]">Employee Profile</th>
+                        <th class="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em]">Responsibility</th>
+                        <th class="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-right">Inquiry Extension</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    <?php 
+                    $staff = [
+                        ['name' => 'Md. Nasir Uddin', 'role' => 'Office Superintendent', 'dept' => 'General Office', 'ext' => '#101'],
+                        ['name' => 'Farida Begum', 'role' => 'Accounts Officer', 'dept' => 'Finance Core', 'ext' => '#102'],
+                        ['name' => 'Sabina Yeasmin', 'role' => 'IT Coordinator', 'dept' => 'Information Systems', 'ext' => '#110']
+                    ];
+                    foreach($staff as $s): ?>
+                    <tr class="hover:bg-slate-50/50 transition-colors group">
+                        <td class="px-10 py-7">
+                            <div class="font-black text-slate-800 text-lg group-hover:text-primary transition-colors"><?= $s['name'] ?></div>
+                        </td>
+                        <td class="px-10 py-7">
+                            <div class="text-slate-600 font-bold text-sm"><?= $s['role'] ?></div>
+                            <div class="text-[9px] font-black text-primary/60 uppercase tracking-widest mt-1"><?= $s['dept'] ?></div>
+                        </td>
+                        <td class="px-10 py-7 text-right font-black text-emerald-600 text-lg"><?= $s['ext'] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>

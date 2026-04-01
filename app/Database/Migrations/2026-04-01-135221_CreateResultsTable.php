@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateTeachersTable extends Migration
+class CreateResultsTable extends Migration
 {
     public function up()
     {
@@ -15,31 +15,35 @@ class CreateTeachersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'name' => [
+            'exam_name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'name_bn' => [
+            'category' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'year' => [
+                'type'       => 'INT',
+                'constraint' => 4,
+            ],
+            'stats' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
                 'null'       => true,
             ],
-            'designation' => [
+            'download_url' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '500',
             ],
-            'department' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+            'exam_type' => [
+                'type'       => 'ENUM',
+                'constraint' => ['board', 'internal'],
+                'default'    => 'board',
             ],
-            'photo_url' => [
+            'class_category' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
-                'null'       => true,
-            ],
-            'qualification' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '50',
                 'null'       => true,
             ],
             'created_at' => [
@@ -52,11 +56,11 @@ class CreateTeachersTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('teachers');
+        $this->forge->createTable('results');
     }
 
     public function down()
     {
-        $this->forge->dropTable('teachers');
+        $this->forge->dropTable('results');
     }
 }

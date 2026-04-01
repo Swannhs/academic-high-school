@@ -23,7 +23,11 @@ class Home extends BaseController
 
     public function teachers()
     {
-        return $this->render('teachers', ['title' => 'Teachers Directory - Prottasha Academic']);
+        $teacherModel = new \App\Models\TeacherModel();
+        $data['teachers'] = $teacherModel->orderBy('id', 'ASC')->findAll();
+        $data['departments'] = array_unique(array_column($data['teachers'], 'department'));
+
+        return $this->render('teachers', array_merge($data, ['title' => 'Teachers Directory - Prottasha Academic']));
     }
 
     public function admission()
