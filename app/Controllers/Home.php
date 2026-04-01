@@ -94,7 +94,23 @@ class Home extends BaseController
 
     public function academic_info()
     {
-        return $this->render('academic_info', ['title' => 'Academic Information - Prottasha Academic']);
+        $eventModel = new \App\Models\AcademicEventModel();
+
+        $year  = (int) ($this->request->getGet('year')  ?? date('Y'));
+        $month = (int) ($this->request->getGet('month') ?? date('n'));
+
+        // Keep month in valid range
+        if ($month < 1) { $month = 12; $year--; }
+        if ($month > 12) { $month = 1; $year++; }
+
+        $data['cal_year']  = $year;
+        $data['cal_month'] = $month;
+        $data['cal_events'] = $eventModel->getByMonth($year, $month);
+        $data['upcoming']   = $eventModel->getUpcoming(5);
+
+        return $this->render('academic_info', array_merge($data, [
+            'title' => 'Academic Information - Prottasha Academic',
+        ]));
     }
 
     public function administration()
