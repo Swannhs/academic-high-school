@@ -1,10 +1,10 @@
 <!-- Hero Banner with Breadcrumbs -->
 <section class="relative h-[320px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img alt="Campus Architecture" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqcwk9x7x8VVt_9vVnPfuWcP4sznI1kLVo6zgDwjfl5wPlJc1C6HfirTkcgXoDt69SZeqOE_3JI0TRlEsvEDfwDKW7tYbTpF4tb2gJtc0pyekS2z4267jLkv3-8Sy4SHY63Kg_5f8huBp083LlA3NBMLSJoP3slaLDoykeGXxEYS9QBzFL6my37CvVXUEK6I3fTRyjvk4shl7zYK_P3iZRpfEcaRmaqRuTBnPTfZ3eS-M5XsY37TTjOPEAOVf8TkbccrjVqk2TQ"/>
+        <img alt="Campus Architecture" class="w-full h-full object-cover brightness-50 opacity-60" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif"/>
         <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
     </div>
-    <div class="relative z-10 max-w-screen-2xl mx-auto px-8 w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
         <nav class="flex items-center gap-2 text-primary-fixed mb-6 font-label tracking-wider text-xs uppercase font-semibold">
             <a class="hover:text-emerald-400 text-white transition-colors" href="<?= base_url() ?>">Home</a>
             <span class="material-symbols-outlined text-white text-sm">chevron_right</span>
@@ -20,7 +20,7 @@
 </section>
 
 <!-- Filter & Search Section -->
-<section class="max-w-screen-2xl mx-auto px-8 -mt-12 relative z-20">
+<section class="max-w-7xl mx-auto px-8 -mt-12 relative z-20">
     <div class="bg-white p-8 rounded-xl shadow-xl border-b-4 border-accent">
         <div class="flex flex-col md:flex-row gap-6 items-end">
             <div class="flex-1 w-full">
@@ -57,7 +57,7 @@
 </section>
 
 <!-- Board Exam Results -->
-<section class="max-w-screen-2xl mx-auto px-8 mt-20">
+<section class="max-w-7xl mx-auto px-8 mt-20">
     <div class="flex items-center gap-4 mb-8">
         <div class="w-2 h-8 bg-accent rounded-full"></div>
         <h2 class="text-3xl font-black text-primary tracking-tight font-headline">Board Exam Results</h2>
@@ -101,7 +101,7 @@
 </section>
 
 <!-- Internal Exam Results -->
-<section class="max-w-screen-2xl mx-auto px-8 mt-20 mb-20">
+<section class="max-w-7xl mx-auto px-8 mt-20 mb-20">
     <div class="flex items-center gap-4 mb-8">
         <div class="w-2 h-8 bg-primary rounded-full"></div>
         <h2 class="text-3xl font-black text-secondary tracking-tight font-headline">Internal Assessment Archive</h2>
@@ -134,7 +134,7 @@
 </section>
 
 <!-- Official Transcript Banner -->
-<section class="max-w-screen-2xl mx-auto px-8 mb-24">
+<section class="max-w-7xl mx-auto px-8 mb-24">
     <div class="bg-slate-900 relative overflow-hidden rounded-[40px] p-12 md:p-20 flex flex-col md:flex-row items-center gap-12 border-[8px] border-white shadow-2xl">
         <div class="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
             <span class="material-symbols-outlined text-[400px] absolute -right-20 -bottom-20 rotate-12">school</span>

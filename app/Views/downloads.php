@@ -1,3 +1,5 @@
+<!-- Downloads Page -->
+<div class="max-w-7xl mx-auto px-8 py-16">
 <!-- Page Header -->
 <div class="mb-16">
 <h1 class="text-5xl md:text-6xl font-headline font-extrabold text-primary mb-4 leading-tight">Downloads Center</h1>
@@ -184,3 +186,4 @@
 <div class="absolute inset-0 bg-primary/10 rounded-xl"></div>
 </div>
 </section>
+</div><!-- /.max-w-7xl -->

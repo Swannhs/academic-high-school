@@ -13,7 +13,7 @@
 </div>
 </div>
 </section>
-<div class="max-w-screen-2xl mx-auto px-8 space-y-24">
+<div class="max-w-7xl mx-auto px-8 space-y-24">
 <!-- Section 1: Class Routines -->
 <section aria-labelledby="class-routine-heading">
 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -149,7 +149,7 @@
 </section>
 </div>
 <!-- Portal CTA Section -->
-<section class="max-w-screen-2xl mx-auto px-8 mb-20">
+<section class="max-w-7xl mx-auto px-8 mb-20">
 <div class="bg-primary-container rounded-3xl p-12 text-center relative overflow-hidden">
 <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent)]"></div>
 <h2 class="text-3xl font-headline font-bold text-white mb-6 relative z-10">Can't find your routine?</h2>

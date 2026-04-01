@@ -1,3 +1,5 @@
+<!-- Notices Page -->
+<div class="max-w-7xl mx-auto px-8 py-16">
 <!-- Header Section -->
 <section class="mb-20">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b-2 border-surface-container pb-8">
@@ -132,3 +134,4 @@
 </button>
 </nav>
 </div>
+</div><!-- /.max-w-7xl -->

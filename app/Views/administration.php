@@ -1,8 +1,8 @@
 <!-- Page Banner & Breadcrumbs -->
-<section class="relative h-[320px] flex items-center overflow-hidden bg-primary">
+<section class="relative h-[320px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover grayscale brightness-50 opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKoq1YoSXwMsuMWPcavhTqHgQDkBlbQ9cp-YXk2UrN_tGURvEp7Ovof3KRZXJTW0WdaoziF6Mc39JB6Fa3-Fc2RNGqwqPIqIXyBCtq6oItUSSnretdhiOr6qeYP6UGFNwbDqH5Alx4MjAjF0jK9_C-xMnHDrKeYF915FXYhzZbus--JJykzeQUN6fVMei6j_2r4Wib1ljXPbOaT1NC3-LJ6SFsumk3OjJLKkIEqmIdHDAKLj9OZocq5THL2f6tu48LZ6wUQo8zCg" alt="Institutional Leadership">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+        <img class="w-full h-full object-cover" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif" alt="Institutional Leadership">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/40"></div>
     </div>
     <div class="max-w-7xl mx-auto px-8 relative z-10 w-full">
         <nav class="flex items-center gap-2 text-white/70 mb-6 text-[10px] uppercase font-black tracking-[0.2em]">

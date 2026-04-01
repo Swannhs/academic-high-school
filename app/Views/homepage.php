@@ -1,10 +1,10 @@
 <!-- Homepage Sections -->
 
 <!-- 1. Hero Section -->
-<section class="relative h-[650px] flex items-center overflow-hidden bg-primary shadow-2xl">
-    <div class="absolute inset-0 z-0 opacity-20">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent z-10"></div>
-        <img class="w-full h-full object-cover grayscale" data-alt="Modern academic building with large glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq0s05pHlIEpUGPEbTl7e0t1FLLpngev53SFJODV8GHD8Z4kIPYBUtX7HpXQIw4PKeer4HHFZjgcZzXDplaEisJT667r9hM7rCT9S5nlE-VNZg-wKdzqUfkFLk3pttDPDiTVveHSQIM2yn9WdRJ48H9mRDW03dQGvjFwb46V_JizQKyWs4MHzmjQnDSxarL1i9bevZbSGoprcsLSd2zMs0b9x6Ls_5fvS6pdhO4z-o32e87O5Z8fDXg4Viri6aM1FEy2UvBqPEXw"/>
+<section class="relative h-[650px] flex items-center overflow-hidden shadow-2xl">
+    <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif" alt="Campus Background"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30"></div>
     </div>
     <div class="relative z-10 w-full px-4 lg:px-16 text-white">
         <div class="max-w-4xl space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
@@ -27,7 +27,7 @@
 
 <!-- 2. Notice Board Section -->
 <section class="py-24 bg-white border-b overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-20">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-20">
         <!-- Left: Notices (8/12) -->
         <div class="lg:col-span-8 space-y-12">
             <div class="flex items-center justify-between">
@@ -92,7 +92,7 @@
 
 <!-- 3. Principal's Message -->
 <section class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-20">
+    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-20">
         <div class="md:w-5/12 relative">
             <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img class="w-full h-full object-cover" data-alt="Portrait of South Asian academic professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwb0B-ArmzFBuLfoyvtQEeKwht9wKtJsjpkkhF3C-Lk3MUx5DSO7XoO3bCV4_qwdafpFa5W17-hC3udt_J6XJHEXfu40IySi_G5ZmQ4vz_NcG5ZNNfS1D6ItU44qQcO-MXGQthZTcoe5i1Z8-TTdtKGhrC9p6YJgWTYFYhz_k2jYX7dv4MaVo45TL7sKjQKD0CmIeO75tiDZ17C_6t9alEo2ncTSdjU3po0D-ZFdoacjH2h0jCHWMojswZ-9FJqGznzCbR6pIsjA"/>
@@ -120,7 +120,7 @@
 
 <!-- 4. Quick Link Grid -->
 <section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-8">
         <div class="text-center mb-16">
             <p class="text-[10px] uppercase font-black tracking-[0.2em] text-accent mb-2">Quick Resources</p>
             <h3 class="text-4xl font-black text-primary">প্রয়োজনীয় লিঙ্ক সমূহ</h3>
@@ -160,7 +160,7 @@
 
 <!-- 5. Featured Gallery -->
 <section class="py-24 bg-surface border-t">
-    <div class="max-w-7xl mx-auto px-4 space-y-12">
+    <div class="max-w-7xl mx-auto px-8 space-y-12">
         <div class="flex items-end justify-between">
             <div>
                 <p class="text-[10px] uppercase font-black tracking-[0.2em] text-primary mb-2">Campus Moments</p>

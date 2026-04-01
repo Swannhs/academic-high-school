@@ -1,3 +1,5 @@
+<!-- Admission Page -->
+<div class="max-w-7xl mx-auto px-8 py-16">
 <!-- Header Section: Admission Portal -->
 <header class="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-container p-12 lg:p-20 text-on-primary">
 <div class="absolute top-0 right-0 w-1/3 h-full opacity-10">
@@ -183,3 +185,4 @@
 </div>
 </aside>
 </div>
+</div><!-- /.max-w-7xl -->

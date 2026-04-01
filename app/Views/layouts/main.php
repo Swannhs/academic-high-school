@@ -33,8 +33,24 @@
     
     <!-- Custom Design Tokens -->
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css') ?>">
+
+    <style>
+        /* Academic pattern: applied to main + all light sections.
+           Sections with explicit colors (bg-primary, bg-slate-900, etc.)
+           naturally cover it with their own opaque bg-color. */
+        main,
+        section[class*="bg-white"],
+        section[class*="bg-surface"],
+        section[class*="bg-slate-50"] {
+            background-image: url('<?= base_url('assets/img/bg_academic_pattern.png') ?>');
+            background-size: 800px 800px;
+            background-attachment: scroll;
+            background-repeat: repeat;
+            background-position: top left;
+        }
+    </style>
 </head>
-<body class="bg-surface text-gray-900 font-body">
+<body class="text-gray-900 font-body">
 
     <!-- Top Utility Bar -->
     <div class="bg-slate-900 text-white text-xs py-2 px-4 flex justify-between items-center">

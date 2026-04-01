@@ -1,8 +1,8 @@
 <!-- Hero Header -->
-<section class="relative h-[360px] flex items-center overflow-hidden bg-primary">
+<section class="relative h-[360px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover grayscale brightness-50 opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQjf5A2-AL9DarscMp86Cv_xrWzVWwJmk-6DrNXM6WtfJQwrbS09ADNL04u1sR7ctmHl-7bxRfc7NZP2izgnAwl_hf78yLknrUUHPnoZDLtX2MimCurg5Otq4S0RgslspQcmFiJOonjiolT1EUFGSQIOxjPFkC7LJ8AZ2mm_6y_Z-zxFNrrvsMlprfA_2h5TpWUuhQDMgRt_HFHWQh-9Y-CkpDrSsJPy5gCeqtzY5mOBEqnCLfGmm1Q5tlXbq9tLf5OjEoQoLN2w" alt="Faculty Header">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+        <img class="w-full h-full object-cover" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif" alt="Faculty Header">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/40"></div>
     </div>
     <div class="max-w-7xl mx-auto px-8 relative z-10 w-full">
         <nav class="flex items-center gap-2 text-white/70 mb-6 text-[10px] uppercase font-black tracking-[0.2em]">
@@ -19,8 +19,11 @@
     </div>
 </section>
 
+<!-- Teachers Content -->
+<section class="bg-white py-2">
+
 <!-- Filter & Search -->
-<section class="max-w-7xl mx-auto px-8 -mt-10 relative z-20">
+<div class="max-w-7xl mx-auto px-8 -mt-10 relative z-20">
     <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex flex-wrap gap-3 items-center">
         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Filter By Department:</span>
         <button data-filter="all" class="dept-btn px-6 py-2.5 rounded-xl bg-primary text-white text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-primary/20">All Faculty</button>
@@ -28,10 +31,10 @@
             <button data-filter="<?= esc($dept) ?>" class="dept-btn px-6 py-2.5 rounded-xl bg-slate-50 text-slate-500 text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 transition-all"><?= esc($dept) ?></button>
         <?php endforeach; ?>
     </div>
-</section>
+</div>
 
 <!-- Teacher Grid -->
-<section class="max-w-7xl mx-auto px-8 py-24">
+<div class="max-w-7xl mx-auto px-8 py-24">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" id="teacher-grid">
         <?php foreach($teachers as $t): ?>
         <div class="teacher-card group bg-white rounded-[40px] p-8 border border-slate-100 hover:border-primary/20 hover:shadow-2xl transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden" data-dept="<?= esc($t['department']) ?>">
@@ -66,10 +69,10 @@
         </div>
         <?php endforeach; ?>
     </div>
-</section>
+</div>
 
 <!-- Recruitment CTA -->
-<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="max-w-7xl mx-auto px-8 pb-24">
     <div class="bg-slate-900 rounded-[48px] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden group">
         <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         <div class="max-w-xl relative z-10">
@@ -81,7 +84,9 @@
             <span class="material-symbols-outlined group-hover/btn:translate-x-2 transition-transform">arrow_forward</span>
         </button>
     </div>
-</section>
+</div>
+
+</section><!-- /.bg-white -->
 
 <script>
     const deptBtns = document.querySelectorAll('.dept-btn');

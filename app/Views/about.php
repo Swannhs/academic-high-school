@@ -1,10 +1,10 @@
 <!-- Page Hero Section -->
-<section class="relative h-[400px] flex items-center overflow-hidden bg-primary">
+<section class="relative h-[400px] flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover grayscale brightness-50 opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKoq1YoSXwMsuMWPcavhTqHgQDkBlbQ9cp-YXk2UrN_tGURvEp7Ovof3KRZXJTW0WdaoziF6Mc39JB6Fa3-Fc2RNGqwqPIqIXyBCtq6oItUSSnretdhiOr6qeYP6UGFNwbDqH5Alx4MjAjF0jK9_C-xMnHDrKeYF915FXYhzZbus--JJykzeQUN6fVMei6j_2r4Wib1ljXPbOaT1NC3-LJ6SFsumk3OjJLKkIEqmIdHDAKLj9OZocq5THL2f6tu48LZ6wUQo8zCg" alt="Background Pattern">
-        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+        <img class="w-full h-full object-cover" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif" alt="Background">
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-primary/40"></div>
     </div>
-    <div class="container mx-auto px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-8 relative z-10">
         <nav class="flex items-center gap-2 mb-8 text-white/60 font-black text-[10px] uppercase tracking-[0.2em]">
             <a class="hover:text-emerald-400 transition-colors" href="<?= base_url() ?>">Home</a>
             <span class="material-symbols-outlined text-xs">chevron_right</span>
@@ -21,7 +21,7 @@
 
 <!-- Heritage Section -->
 <section class="py-32 bg-white relative">
-    <div class="container mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             <div class="lg:col-span-6 space-y-8">
                 <div class="inline-block">
@@ -54,7 +54,7 @@
 
 <!-- Values & Vision Bento -->
 <section class="py-32 bg-slate-50">
-    <div class="container mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="bg-white p-12 rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 group">
                 <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mb-10 shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-12 transition-transform">
@@ -84,7 +84,7 @@
 
 <!-- Facilities Showcase -->
 <section class="py-32 bg-white">
-    <div class="container mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div class="max-w-2xl">
                 <span class="text-primary font-black tracking-[0.3em] uppercase text-[10px] bg-emerald-50 px-3 py-1 rounded-full">Campus Infrastructure</span>
@@ -115,7 +115,7 @@
 <!-- Principal's Message -->
 <section class="py-32 bg-slate-950 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/10 -rotate-12 translate-x-1/2 rounded-full blur-[120px]"></div>
-    <div class="container mx-auto px-8 flex flex-col lg:flex-row items-center gap-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row items-center gap-24 relative z-10">
         <div class="w-full lg:w-2/5">
             <div class="relative group">
                 <div class="absolute -inset-6 bg-primary/20 rounded-[48px] scale-105 group-hover:scale-100 transition-transform duration-700"></div>
@@ -143,7 +143,7 @@
 
 <!-- Timeline (Achievements) -->
 <section class="py-32 bg-white">
-    <div class="container mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-8">
         <div class="text-center mb-24">
             <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px]">Institutional Milestones</span>
             <h2 class="text-5xl font-black font-headline text-slate-900 mt-4 tracking-tighter leading-tight">Decades of Achievement</h2>

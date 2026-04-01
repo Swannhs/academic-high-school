@@ -1,3 +1,5 @@
+<!-- Gallery Page -->
+<div class="max-w-7xl mx-auto px-8 py-16">
 <!-- Gallery Header -->
 <section class="mb-16">
     <div class="flex flex-col md:flex-row justify-between items-end border-b-2 border-surface-container pb-8 gap-8">
@@ -122,3 +124,4 @@
         if (e.key === 'Escape') closeLightbox();
     });
 </script>
+</div><!-- /.max-w-7xl -->
