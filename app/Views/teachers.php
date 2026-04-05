@@ -41,7 +41,7 @@
             <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] -mr-16 -mt-16 group-hover:scale-150 group-hover:bg-primary/10 transition-transform duration-700"></div>
             
             <div class="w-40 h-40 rounded-[48px] overflow-hidden mb-8 ring-8 ring-slate-50 group-hover:ring-emerald-50 transition-all duration-500 shadow-inner">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="<?= esc($t['photo_url']) ?>" alt="<?= esc($t['name']) ?>">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="<?= esc(upload_url('teachers', $t['photo_url'] ?? $t['photo'] ?? null) ?? '') ?>" alt="<?= esc($t['name']) ?>">
             </div>
             
             <div class="mb-6 relative z-10">
