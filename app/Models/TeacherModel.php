@@ -6,41 +6,25 @@ use CodeIgniter\Model;
 
 class TeacherModel extends Model
 {
-    protected $table            = 'teachers';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'designation', 'department', 'photo_url', 'qualification'];
-
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
-
-    protected array $casts = [];
-    protected array $castHandlers = [];
-
-    // Dates
+    protected $table = 'teachers';
+    protected $primaryKey = 'id';
+    protected $returnType = 'array';
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
-
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
-
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $allowedFields = [
+        'name',
+        'name_bn',
+        'photo',
+        'photo_url',
+        'designation',
+        'department',
+        'subject',
+        'qualification',
+        'phone',
+        'email',
+        'joining_date',
+        'display_order',
+        'status',
+        'created_by',
+        'updated_by',
+    ];
 }

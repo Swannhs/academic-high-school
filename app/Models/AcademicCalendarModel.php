@@ -4,21 +4,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class NoticeModel extends Model
+class AcademicCalendarModel extends Model
 {
-    protected $table = 'notices';
+    protected $table = 'academic_calendar';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'title',
-        'slug',
-        'category_id',
-        'short_description',
-        'content',
-        'attachment',
-        'publish_date',
-        'is_featured',
+        'event_title',
+        'category',
+        'start_date',
+        'end_date',
+        'description',
         'status',
         'created_by',
         'updated_by',

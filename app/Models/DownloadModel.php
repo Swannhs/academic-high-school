@@ -4,27 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ResultModel extends Model
+class DownloadModel extends Model
 {
-    protected $table = 'results';
+    protected $table = 'downloads';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
     protected $useTimestamps = true;
     protected $allowedFields = [
         'title',
-        'exam_name',
-        'class_name',
-        'session_year',
+        'category',
         'file_path',
-        'publish_date',
         'description',
         'status',
-        'category',
-        'year',
-        'stats',
-        'download_url',
-        'exam_type',
-        'class_category',
+        'publish_date',
         'created_by',
         'updated_by',
     ];
