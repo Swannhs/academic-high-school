@@ -39,12 +39,14 @@ class GalleryController extends AdminBaseController
         }
         $cover = $this->uploadFile('cover_image', 'gallery');
         $id = $this->albums->insert([
-            'title'       => $this->request->getPost('title'),
-            'category'    => $this->request->getPost('category'),
-            'cover_image' => $cover,
-            'event_date'  => $this->request->getPost('event_date'),
-            'description' => $this->request->getPost('description'),
-            'status'      => $this->request->getPost('status') ?: 'active',
+            'title'          => $this->request->getPost('title'),
+            'title_bn'       => $this->request->getPost('title_bn'),
+            'category'       => $this->request->getPost('category'),
+            'cover_image'    => $cover,
+            'event_date'     => $this->request->getPost('event_date'),
+            'description'    => $this->request->getPost('description'),
+            'description_bn' => $this->request->getPost('description_bn'),
+            'status'         => $this->request->getPost('status') ?: 'active',
         ], true);
         // Handle multiple image uploads
         $this->handleImageUploads((int)$id);
@@ -72,12 +74,14 @@ class GalleryController extends AdminBaseController
         }
         $cover = $this->uploadFile('cover_image', 'gallery', $album['cover_image']);
         $this->albums->update($id, [
-            'title'       => $this->request->getPost('title'),
-            'category'    => $this->request->getPost('category'),
-            'cover_image' => $cover,
-            'event_date'  => $this->request->getPost('event_date'),
-            'description' => $this->request->getPost('description'),
-            'status'      => $this->request->getPost('status'),
+            'title'          => $this->request->getPost('title'),
+            'title_bn'       => $this->request->getPost('title_bn'),
+            'category'       => $this->request->getPost('category'),
+            'cover_image'    => $cover,
+            'event_date'     => $this->request->getPost('event_date'),
+            'description'    => $this->request->getPost('description'),
+            'description_bn' => $this->request->getPost('description_bn'),
+            'status'         => $this->request->getPost('status'),
         ]);
         $this->handleImageUploads($id);
         return redirect()->to(base_url('admin/gallery'))->with('success', 'Album updated.');

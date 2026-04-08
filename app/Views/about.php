@@ -1,21 +1,46 @@
 <!-- Page Hero Section -->
-<section class="relative h-[400px] flex items-center overflow-hidden">
+<section class="relative min-h-[400px] flex items-center overflow-hidden bg-slate-900">
+    <!-- Animated Gradient Background -->
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif" alt="Background">
-        <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/70 to-primary/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-primary/30 opacity-90 mix-blend-multiply"></div>
+        <img class="w-full h-full object-cover opacity-30 grayscale" src="https://images.unsplash.com/photo-1523050335109-7efbbe195018?q=80&w=2000" alt="About Prottasha">
+        
+        <!-- Decorative Overlays -->
+        <div class="absolute top-0 right-0 w-[500px] h-full bg-gradient-to-l from-primary/20 to-transparent"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/10 rounded-full blur-[120px]"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-8 relative z-10">
-        <nav class="flex items-center gap-2 mb-8 text-white/60 font-black text-[10px] uppercase tracking-[0.2em]">
-            <a class="hover:text-emerald-400 transition-colors" href="<?= base_url() ?>">Home</a>
-            <span class="material-symbols-outlined text-xs">chevron_right</span>
-            <span class="text-emerald-400">About Us</span>
-        </nav>
-        <h1 class="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter leading-none mb-6">
-            Our Legacy of <br><span class="text-emerald-400">Excellence</span>
-        </h1>
-        <p class="text-emerald-100/70 max-w-2xl text-lg font-medium leading-relaxed">
-            Shaping the future of Bangladesh since 1994 through a synthesis of academic rigor and moral values.
-        </p>
+
+    <!-- Floating Graphic -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-10 pointer-events-none hidden lg:block text-white">
+        <span class="material-symbols-outlined text-[600px] select-none" style="font-variation-settings: 'FILL' 1;">
+            history_edu
+        </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full py-20 text-white">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+            <div class="flex-1">
+                <nav class="flex items-center gap-2 text-emerald-400 mb-8 text-[11px] uppercase font-black tracking-[0.3em]">
+                    <a class="hover:text-white transition-colors flex items-center gap-1" href="<?= base_url() ?>">
+                        <span class="material-symbols-outlined text-sm">home</span>
+                        <?= lang('App.breadcrumb.home') ?>
+                    </a>
+                    <span class="text-white/30">•</span>
+                    <span class="text-white/50"><?= lang('App.nav.about') ?></span>
+                </nav>
+                
+                <h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] mb-8">
+                    <?= lang('App.headers.about') ?>
+                </h1>
+                
+                <div class="flex items-center gap-6">
+                    <span class="h-px w-12 bg-emerald-500/50"></span>
+                    <p class="text-white/80 max-w-xl text-xl font-medium leading-relaxed italic">
+                        <?= lang('App.headers.about_sub') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -25,9 +50,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             <div class="lg:col-span-6 space-y-8">
                 <div class="inline-block">
-                    <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px] border-b-2 border-accent/20 pb-2">Institutional Heritage</span>
+                    <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px] border-b-2 border-accent/20 pb-2"><?= lang('App.about_page.heritage') ?></span>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black font-headline text-slate-900 leading-tight">Founded on Vision, Built on <span class="text-primary">Dedication</span></h2>
+                <h2 class="text-4xl md:text-5xl font-black font-headline text-slate-900 leading-tight"><?= lang('App.about_page.heritage_title') ?></h2>
                 <div class="text-lg text-slate-600 leading-relaxed space-y-6 font-medium">
                     <p>Founded in 1994 by a group of visionary educators and community leaders, Prottasha High School began as a modest endeavor to provide quality education to the local community.</p>
                     <p class="border-l-4 border-emerald-500 pl-8 italic text-slate-800 bg-slate-50 py-6 rounded-r-2xl">
@@ -42,8 +67,8 @@
                     <div class="relative rounded-[32px] overflow-hidden shadow-2xl bg-white border-8 border-white p-2">
                         <img class="w-full h-[500px] object-cover rounded-[24px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW-FJUIAGbD2X17IunpXLzL5B1zPzsE6hlV5GsPpDRtCb1uhUoyTnJ69uszjZWRKfwBouNa6k_ft_8U9vOpGxd-jygbaphT_gMG2_t9GkKnx3m_lxgbPRoc23TcAgMavya_SzOhS9QY__ODVHN3v76neWWi2E0Ptu5kzlc1kv_ZiQxtFJSmPxc-TZufadBmGGtKP0XMr85hiy6Gh82Tl72h8KYL3GqNUvjn4wdNb7n4EwlctlMFc6LCHihIp4szR4JD0qmhXqGqg" alt="Original Campus">
                         <div class="absolute bottom-6 left-6 right-6 p-8 bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-white/10">
-                            <h4 class="text-emerald-400 font-black text-xs uppercase tracking-widest mb-1">Our Humble Beginnings</h4>
-                            <p class="text-white font-bold italic text-lg">The Original Campus, Academic Session 1994</p>
+                            <h4 class="text-emerald-400 font-black text-xs uppercase tracking-widest mb-1"><?= lang('App.about_page.humble_beginnings') ?></h4>
+                            <p class="text-white font-bold italic text-lg"><?= service('request')->getLocale() == 'bn' ? 'মূল ক্যাম্পাস, শিক্ষাবর্ষ ১৯৯৪' : 'The Original Campus, Academic Session 1994' ?></p>
                         </div>
                     </div>
                 </div>
@@ -60,7 +85,7 @@
                 <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mb-10 shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-12 transition-transform">
                     <span class="material-symbols-outlined text-white text-4xl">rocket_launch</span>
                 </div>
-                <h3 class="text-3xl font-black font-headline text-slate-900 mb-6 tracking-tight">Our Mission</h3>
+                <h3 class="text-3xl font-black font-headline text-slate-900 mb-6 tracking-tight"><?= lang('App.about_page.mission') ?></h3>
                 <p class="text-slate-600 text-lg leading-relaxed font-medium">To nurture curious minds through a holistic educational approach that balances academic excellence with physical fitness, creative expression, and social responsibility.</p>
                 <div class="mt-8 flex gap-2">
                     <div class="w-3 h-1 bg-primary rounded-full"></div>
@@ -71,7 +96,7 @@
                 <div class="w-20 h-20 bg-accent rounded-3xl flex items-center justify-center mb-10 shadow-lg shadow-accent/20 -rotate-3 group-hover:-rotate-12 transition-transform">
                     <span class="material-symbols-outlined text-white text-4xl">visibility</span>
                 </div>
-                <h3 class="text-3xl font-black font-headline text-white mb-6 tracking-tight">Our Vision</h3>
+                <h3 class="text-3xl font-black font-headline text-white mb-6 tracking-tight"><?= lang('App.about_page.vision') ?></h3>
                 <p class="text-slate-400 text-lg leading-relaxed font-medium">To be a premier learning center that empowers students to become globally competitive, ethically grounded citizens who contribute meaningfully to the progress of Bangladesh.</p>
                 <div class="mt-8 flex gap-2">
                     <div class="w-3 h-1 bg-accent rounded-full"></div>
@@ -87,8 +112,8 @@
     <div class="max-w-7xl mx-auto px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div class="max-w-2xl">
-                <span class="text-primary font-black tracking-[0.3em] uppercase text-[10px] bg-emerald-50 px-3 py-1 rounded-full">Campus Infrastructure</span>
-                <h2 class="text-4xl md:text-5xl font-black font-headline text-slate-900 mt-4 tracking-tighter">Environment for Excellence</h2>
+                <span class="text-primary font-black tracking-[0.3em] uppercase text-[10px] bg-emerald-50 px-3 py-1 rounded-full"><?= lang('App.about_page.infrastructure') ?></span>
+                <h2 class="text-4xl md:text-5xl font-black font-headline text-slate-900 mt-4 tracking-tighter"><?= lang('App.about_page.infra_title') ?></h2>
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -145,8 +170,8 @@
 <section class="py-32 bg-white">
     <div class="max-w-7xl mx-auto px-8">
         <div class="text-center mb-24">
-            <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px]">Institutional Milestones</span>
-            <h2 class="text-5xl font-black font-headline text-slate-900 mt-4 tracking-tighter leading-tight">Decades of Achievement</h2>
+            <span class="text-accent font-black tracking-[0.3em] uppercase text-[10px]"><?= lang('App.about_page.milestones') ?></span>
+            <h2 class="text-5xl font-black font-headline text-slate-900 mt-4 tracking-tighter leading-tight"><?= lang('App.about_page.milestones_title') ?></h2>
         </div>
         <div class="max-w-4xl mx-auto space-y-24 relative pb-12">
             <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-100 -translate-x-1/2 hidden md:block rounded-full"></div>

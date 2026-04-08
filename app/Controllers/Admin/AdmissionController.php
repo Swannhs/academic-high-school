@@ -24,7 +24,8 @@ class AdmissionController extends AdminBaseController
     {
         $this->requirePermission('manage_admission');
         $rules = [
-            'title' => 'required|max_length[200]',
+            'title'    => 'required|max_length[200]',
+            'title_bn' => 'permit_empty|max_length[200]',
             'session_year' => 'permit_empty|max_length[20]',
         ];
         if (! $this->validate($rules)) {
@@ -38,15 +39,21 @@ class AdmissionController extends AdminBaseController
         $circular = $this->uploadFile('circular_file', 'admission', $info['circular_file'] ?? null);
 
         $data = [
-            'title'           => $this->request->getPost('title'),
-            'session_year'    => $this->request->getPost('session_year'),
-            'overview'        => $this->request->getPost('overview'),
-            'eligibility'     => $this->request->getPost('eligibility'),
-            'requirements'    => $this->request->getPost('requirements'),
-            'important_dates' => $this->request->getPost('important_dates'),
-            'instructions'    => $this->request->getPost('instructions'),
-            'status'          => $this->request->getPost('status') ?: 'active',
-            'updated_at'      => date('Y-m-d H:i:s'),
+            'title'              => $this->request->getPost('title'),
+            'title_bn'           => $this->request->getPost('title_bn'),
+            'session_year'       => $this->request->getPost('session_year'),
+            'overview'           => $this->request->getPost('overview'),
+            'overview_bn'        => $this->request->getPost('overview_bn'),
+            'eligibility'        => $this->request->getPost('eligibility'),
+            'eligibility_bn'     => $this->request->getPost('eligibility_bn'),
+            'requirements'       => $this->request->getPost('requirements'),
+            'requirements_bn'    => $this->request->getPost('requirements_bn'),
+            'important_dates'    => $this->request->getPost('important_dates'),
+            'important_dates_bn' => $this->request->getPost('important_dates_bn'),
+            'instructions'       => $this->request->getPost('instructions'),
+            'instructions_bn'    => $this->request->getPost('instructions_bn'),
+            'status'             => $this->request->getPost('status') ?: 'active',
+            'updated_at'         => date('Y-m-d H:i:s'),
         ];
 
         if ($appForm)  $data['application_form_file'] = $appForm;

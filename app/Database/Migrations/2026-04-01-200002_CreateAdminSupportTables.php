@@ -27,6 +27,7 @@ class CreateAdminSupportTables extends Migration
             'username'      => ['type' => 'VARCHAR', 'constraint' => 60, 'unique' => true],
             'email'         => ['type' => 'VARCHAR', 'constraint' => 120, 'unique' => true],
             'password_hash' => ['type' => 'VARCHAR', 'constraint' => 255],
+            'avatar'        => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'status'        => ['type' => 'VARCHAR', 'constraint' => 20, 'default' => 'active'],
             'last_login'    => ['type' => 'DATETIME', 'null' => true],
             'created_at'    => ['type' => 'DATETIME', 'null' => true],
@@ -35,12 +36,21 @@ class CreateAdminSupportTables extends Migration
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('users', true);
 
-        // roles_permissions (pivot)
+        // permissions
+        $this->forge->addField([
+            'id'    => ['type' => 'INTEGER', 'auto_increment' => true],
+            'key'   => ['type' => 'VARCHAR', 'constraint' => 100, 'unique' => true],
+            'label' => ['type' => 'VARCHAR', 'constraint' => 120],
+        ]);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('permissions', true);
+
+        // role_permissions (pivot)
         $this->forge->addField([
             'role_id'       => ['type' => 'INTEGER'],
-            'permission_key'=> ['type' => 'VARCHAR', 'constraint' => 100],
+            'permission_id' => ['type' => 'INTEGER'],
         ]);
-        $this->forge->addKey(['role_id', 'permission_key'], true);
+        $this->forge->addKey(['role_id', 'permission_id'], true);
         $this->forge->createTable('role_permissions', true);
 
         // notice_categories
@@ -303,7 +313,7 @@ class CreateAdminSupportTables extends Migration
 
     public function down(): void
     {
-        foreach (['roles', 'users', 'role_permissions', 'notice_categories', 'notices', 'teachers', 'results', 'routines', 'academic_calendar', 'downloads',
+        foreach (['roles', 'users', 'permissions', 'role_permissions', 'notice_categories', 'notices', 'teachers', 'results', 'routines', 'academic_calendar', 'downloads',
                   'pages', 'staff', 'gallery_images', 'gallery_albums',
                   'contact_messages', 'feedback', 'settings', 'admission_info'] as $table) {
             $this->forge->dropTable($table, true);

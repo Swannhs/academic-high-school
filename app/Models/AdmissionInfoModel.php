@@ -10,7 +10,7 @@ class AdmissionInfoModel extends Model
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'title', 'session_year', 'overview', 'eligibility', 'requirements',
-        'important_dates', 'instructions', 'application_form_file', 'circular_file', 'status',
+        'title', 'title_bn', 'session_year', 'overview', 'overview_bn', 'eligibility', 'eligibility_bn', 'requirements', 'requirements_bn',
+        'important_dates', 'important_dates_bn', 'instructions', 'instructions_bn', 'application_form_file', 'circular_file', 'status',
     ];
 }

@@ -9,5 +9,5 @@ class StaffModel extends Model
     protected $table = 'staff';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
-    protected $allowedFields = ['name', 'photo', 'role', 'department', 'contact', 'display_order', 'status', 'created_by', 'updated_by'];
+    protected $allowedFields = ['name', 'name_bn', 'photo', 'role', 'role_bn', 'department', 'department_bn', 'contact', 'display_order', 'status', 'created_by', 'updated_by'];
 }

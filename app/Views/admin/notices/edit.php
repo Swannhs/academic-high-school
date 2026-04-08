@@ -9,11 +9,52 @@
     <div class="card-body">
         <form action="<?= $action ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
-            <div class="mb-3">
-                <label class="form-label">Title <span class="text-danger">*</span></label>
-                <input type="text" name="title" class="form-control" value="<?= esc(old('title', $notice['title'] ?? '')) ?>" required>
+            
+            <!-- Language Tabs -->
+            <ul class="nav nav-tabs mb-4" id="noticeLangTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="en-tab" data-bs-toggle="tab" data-bs-target="#en-content" type="button" role="tab">English</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bn-tab" data-bs-toggle="tab" data-bs-target="#bn-content" type="button" role="tab">Bengali (বাং)</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="noticeLangTabContent">
+                <!-- English Content -->
+                <div class="tab-pane fade show active" id="en-content" role="tabpanel">
+                    <div class="mb-3">
+                        <label class="form-label">Title (EN) <span class="text-danger">*</span></label>
+                        <input type="text" name="title" class="form-control" value="<?= esc(old('title', $notice['title'] ?? '')) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Short Description (EN) <small class="text-muted fw-normal">— shown in listing</small></label>
+                        <textarea name="short_description" class="form-control richtext-simple" rows="2"><?= esc(old('short_description', $notice['short_description'] ?? '')) ?></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Full Content (EN)</label>
+                        <textarea name="content" class="form-control richtext" rows="8"><?= old('content', $notice['content'] ?? '') ?></textarea>
+                    </div>
+                </div>
+
+                <!-- Bengali Content -->
+                <div class="tab-pane fade" id="bn-content" role="tabpanel">
+                    <div class="mb-3">
+                        <label class="form-label">Title (BN)</label>
+                        <input type="text" name="title_bn" class="form-control" value="<?= esc(old('title_bn', $notice['title_bn'] ?? '')) ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Short Description (BN)</label>
+                        <textarea name="short_description_bn" class="form-control richtext-simple" rows="2"><?= esc(old('short_description_bn', $notice['short_description_bn'] ?? '')) ?></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Full Content (BN)</label>
+                        <textarea name="content_bn" class="form-control richtext" rows="8"><?= old('content_bn', $notice['content_bn'] ?? '') ?></textarea>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
+
+            <div class="mb-4">
                 <label class="form-label">Category <span class="text-danger">*</span></label>
                 <select name="category_id" class="form-select" required>
                     <option value="">Select Category</option>
@@ -22,14 +63,7 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Short Description</label>
-                <textarea name="short_description" class="form-control" rows="2"><?= esc(old('short_description', $notice['short_description'] ?? '')) ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Full Content</label>
-                <textarea name="content" class="form-control" rows="6"><?= esc(old('content', $notice['content'] ?? '')) ?></textarea>
-            </div>
+
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="form-label">Attachment (PDF/Image)</label>
@@ -67,4 +101,7 @@
     </div>
 </div>
 </div>
+
+<?= view('admin/layouts/_editor') ?>
+
 </div>

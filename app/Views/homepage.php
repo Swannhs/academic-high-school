@@ -9,17 +9,16 @@
     <div class="relative z-10 w-full px-4 lg:px-16 text-white">
         <div class="max-w-4xl space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
             <div class="space-y-4">
-                <p class="text-xs lg:text-sm font-black uppercase tracking-widest text-emerald-400 bg-emerald-400/10 w-fit px-4 py-2 rounded-full border border-emerald-400/20"><?= esc($settings['tagline'] ?? 'Established 1998 • Excellence in Education') ?></p>
-                <h2 class="text-4xl lg:text-7xl font-black leading-none drop-shadow-lg"><?= esc($settings['school_name_bn'] ?? 'প্রত্যাশা একাডেমিক উচ্চ বিদ্যালয়') ?></h2>
-                <h3 class="text-2xl lg:text-4xl font-bold opacity-80 uppercase tracking-tight"><?= esc($settings['school_name'] ?? 'Prottasha Academic High School') ?></h3>
+                <p class="text-xs lg:text-sm font-black uppercase tracking-widest text-emerald-400 bg-emerald-400/10 w-fit px-4 py-2 rounded-full border border-emerald-400/20"><?= esc(ld($settings, 'tagline')) ?: 'Established 1998 • Excellence in Education' ?></p>
+                <h2 class="text-4xl lg:text-7xl font-black leading-none drop-shadow-lg"><?= esc(ld($settings, 'school_name')) ?></h2>
             </div>
             <p class="text-lg lg:text-2xl font-medium opacity-90 border-l-4 border-emerald-400 pl-8 max-w-2xl italic leading-relaxed">
-                "<?= esc($settings['homepage_hero'] ?: 'Nurturing moral values and academic brilliance for a brighter Bangladesh.') ?>"
+                "<?= esc(ld($settings, 'homepage_hero') ?: 'Nurturing moral values and academic brilliance for a brighter Bangladesh.') ?>"
             </p>
             <div class="flex flex-wrap gap-4 pt-8">
-                <a href="<?= base_url('notices') ?>" class="bg-primary-dark border border-emerald-600 text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-emerald-400 hover:text-primary transition-all duration-300 shadow-2xl active:scale-95">Latest Notices</a>
-                <a href="<?= base_url('admission') ?>" class="bg-white text-primary px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-2xl active:scale-95">Admission Info</a>
-                <a href="<?= base_url('results') ?>" class="bg-accent text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-red-800 transition-all shadow-2xl active:scale-95">Result Portal</a>
+                <a href="<?= base_url('notices') ?>" class="bg-primary-dark border border-emerald-600 text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-emerald-400 hover:text-primary transition-all duration-300 shadow-2xl active:scale-95"><?= lang('App.hero.notices') ?></a>
+                <a href="<?= base_url('admission') ?>" class="bg-white text-primary px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-2xl active:scale-95"><?= lang('App.hero.admission') ?></a>
+                <a href="<?= base_url('results') ?>" class="bg-accent text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-red-800 transition-all shadow-2xl active:scale-95"><?= lang('App.hero.results') ?></a>
             </div>
         </div>
     </div>
@@ -32,11 +31,11 @@
         <div class="lg:col-span-8 space-y-12">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-[10px] uppercase font-black tracking-[0.2em] text-accent mb-2">Announcement Hub</p>
-                    <h3 class="text-4xl font-black text-primary tracking-tight">সর্বশেষ নোটিশ সমূহ</h3>
+                    <p class="text-[10px] uppercase font-black tracking-[0.2em] text-accent mb-2"><?= lang('App.homepage.announcement_hub') ?></p>
+                    <h3 class="text-4xl font-black text-primary tracking-tight"><?= lang('App.notices.latest') ?></h3>
                 </div>
                 <a href="<?= base_url('notices') ?>" class="flex items-center gap-3 text-secondary font-black text-xs uppercase tracking-widest border-b-2 border-secondary pb-1 hover:gap-6 transition-all group">
-                    View Archive <span class="material-symbols-outlined text-sm group-hover:text-accent">arrow_right_alt</span>
+                    <?= lang('App.notices.archive') ?> <span class="material-symbols-outlined text-sm group-hover:text-accent">arrow_right_alt</span>
                 </a>
             </div>
             
@@ -53,7 +52,7 @@
                         <span class="text-3xl font-black"><?= date('d', $date) ?></span>
                     </div>
                     <div class="flex-1">
-                        <h4 class="text-xl font-black text-gray-900 group-hover:text-primary transition-colors"><?= esc($notice['title']) ?></h4>
+                        <h4 class="text-xl font-black text-gray-900 group-hover:text-primary transition-colors"><?= esc(ld($notice, 'title')) ?></h4>
                         <p class="text-sm text-gray-500 font-medium mt-1 italic">Published on <?= date('M j, Y', $date) ?></p>
                     </div>
                     <?php if ($notice['attachment']): ?>
@@ -68,22 +67,22 @@
 
         <!-- Right: Stats -->
         <div class="lg:col-span-4 bg-primary text-white p-12 rounded-3xl space-y-10 relative overflow-hidden shadow-2xl">
-            <h4 class="text-lg font-black uppercase tracking-widest border-b border-white/10 pb-4">Campus Snapshot</h4>
+            <h4 class="text-lg font-black uppercase tracking-widest border-b border-white/10 pb-4"><?= lang('App.homepage.campus_snapshot') ?></h4>
             <div class="space-y-8">
                 <div class="flex items-end gap-4">
-                    <span class="text-5xl font-black text-emerald-400 leading-none">98.5%</span>
-                    <p class="text-[10px] uppercase font-black tracking-widest opacity-60 pb-1">SSC Success Batch 2023</p>
+                    <span class="text-5xl font-black text-emerald-400 leading-none"><?= esc($settings['stat_1_value'] ?? '98.5%') ?></span>
+                    <p class="text-[10px] uppercase font-black tracking-widest opacity-60 pb-1"><?= esc(ld($settings, 'stat_1_label') ?: lang('App.homepage.ssc_success')) ?></p>
                 </div>
                 <div class="flex items-end gap-4">
-                    <span class="text-5xl font-black text-emerald-400 leading-none">42+</span>
-                    <p class="text-[10px] uppercase font-black tracking-widest opacity-60 pb-1">Specialized Lab Facilities</p>
+                    <span class="text-5xl font-black text-emerald-400 leading-none"><?= esc($settings['stat_2_value'] ?? '42+') ?></span>
+                    <p class="text-[10px] uppercase font-black tracking-widest opacity-60 pb-1"><?= esc(ld($settings, 'stat_2_label') ?: lang('App.homepage.lab_facilities')) ?></p>
                 </div>
                 <div class="flex items-end gap-4">
-                    <span class="text-5xl font-black text-emerald-400 leading-none">125k</span>
-                    <p class="text-[10px] uppercase font-black tracking-widest opacity-60 pb-1">Digital Library Resources</p>
+                    <span class="text-5xl font-black text-emerald-400 leading-none"><?= esc($settings['stat_3_value'] ?? '1,200+') ?></span>
+                    <p class="text-[10px] uppercase font-black tracking-widest opacity-60 pb-1"><?= esc(ld($settings, 'stat_3_label') ?: lang('App.homepage.digital_library')) ?></p>
                 </div>
             </div>
-            <a href="<?= base_url('academic-info') ?>" class="block w-full bg-white text-primary text-center py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-lg hover:scale-95 transition-all">Download Prospectus</a>
+            <a href="<?= base_url('academic-info') ?>" class="block w-full bg-white text-primary text-center py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-lg hover:scale-95 transition-all"><?= lang('App.homepage.download_prospectus') ?></a>
         </div>
     </div>
 </section>
@@ -99,17 +98,17 @@
         </div>
         <div class="md:w-7/12 space-y-8">
             <div>
-                <p class="text-[10px] uppercase font-black tracking-[0.2em] text-primary mb-2">Message from Head of Institution</p>
-                <h3 class="text-5xl font-black text-gray-900 leading-tight">"আমরা মানুষ গড়ি, কেবল শিক্ষিত নয়।"</h3>
-                <h4 class="text-2xl font-bold text-gray-500 italic uppercase">Dedicated to Character & Excellence</h4>
+                <p class="text-[10px] uppercase font-black tracking-[0.2em] text-primary mb-2"><?= lang('App.principal.title') ?></p>
+                <h3 class="text-5xl font-black text-gray-900 leading-tight"><?= lang('App.homepage.principal_quote') ?></h3>
+                <h4 class="text-2xl font-bold text-gray-500 italic uppercase"><?= lang('App.homepage.principal_subtitle') ?></h4>
             </div>
             <div class="text-gray-600 text-lg leading-relaxed font-medium space-y-4">
-                <?= nl2br(esc($settings['principal_message_snippet'] ?: 'Welcome to Prottasha Academic High School. Our institution is not just a building; it is a vision to shape the future of our nation through disciplined education and moral grounding.')) ?>
+                <?= ld($settings, 'principal_message_snippet') ?: 'Welcome to Prottasha Academic High School. Our institution is not just a building; it is a vision to shape the future of our nation through disciplined education and moral grounding.' ?>
             </div>
             <div class="pt-6">
-                <p class="text-2xl font-black text-primary">Md. Abdur Rahman</p>
-                <p class="text-xs uppercase font-black tracking-widest text-gray-400">Principal, <?= esc($settings['school_name'] ?? 'Prottasha Academic High School') ?></p>
-                <a href="<?= base_url('about') ?>" class="inline-block mt-8 text-primary font-black text-xs uppercase tracking-widest border-2 border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all">Read Full Letter</a>
+                <p class="text-2xl font-black text-primary"><?= esc(ld($settings, 'principal_name') ?: 'Md. Abdur Rahman') ?></p>
+                <p class="text-xs uppercase font-black tracking-widest text-gray-400"><?= esc(ld($settings, 'principal_title') ?: 'Principal') ?>, <?= esc(ld($settings, 'school_name')) ?></p>
+                <a href="<?= base_url('about') ?>" class="inline-block mt-8 text-primary font-black text-xs uppercase tracking-widest border-2 border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all"><?= lang('App.principal.read_more') ?></a>
             </div>
         </div>
     </div>
@@ -118,8 +117,8 @@
 <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-8">
         <div class="text-center mb-16">
-            <p class="text-[10px] uppercase font-black tracking-[0.2em] text-accent mb-2">Quick Resources</p>
-            <h3 class="text-4xl font-black text-primary">প্রয়োজনীয় লিঙ্ক সমূহ</h3>
+            <p class="text-[10px] uppercase font-black tracking-[0.2em] text-accent mb-2"><?= lang('App.homepage.quick_resources') ?></p>
+            <h3 class="text-4xl font-black text-primary"><?= lang('App.homepage.essential_links') ?></h3>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
             <!-- Admission Card -->
@@ -148,7 +147,7 @@
                 <div class="w-20 h-20 bg-primary/5 rounded-2xl mx-auto flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                     <span class="material-symbols-outlined text-4xl">groups</span>
                 </div>
-                <span class="block text-sm font-black uppercase tracking-widest text-gray-900 group-hover:text-primary transition-colors">Teacher List</span>
+                <span class="block text-sm font-black uppercase tracking-widest text-gray-900 group-hover:text-primary transition-colors"><?= lang('App.nav.teachers') ?></span>
             </a>
         </div>
     </div>
@@ -159,21 +158,48 @@
     <div class="max-w-7xl mx-auto px-8 space-y-12">
         <div class="flex items-end justify-between">
             <div>
-                <p class="text-[10px] uppercase font-black tracking-[0.2em] text-primary mb-2">Campus Moments</p>
-                <h3 class="text-4xl font-black text-gray-900 leading-tight">Campus Gallery Highlights</h3>
+                <p class="text-[10px] uppercase font-black tracking-[0.2em] text-primary mb-2"><?= lang('App.homepage.campus_moments') ?></p>
+                <h3 class="text-4xl font-black text-gray-900 leading-tight"><?= lang('App.homepage.gallery_highlights') ?></h3>
             </div>
-            <a href="<?= base_url('gallery') ?>" class="bg-primary text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-emerald-600 transition-all">View Full Gallery</a>
+            <a href="<?= base_url('gallery') ?>" class="bg-primary text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-emerald-600 transition-all"><?= lang('App.homepage.view_all_gallery') ?></a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <?php
+                $galleryImages = $featuredImages ?? [];
+                $heroImg   = $galleryImages[0] ?? null;
+                $thumbImg1 = $galleryImages[1] ?? null;
+                $thumbImg2 = $galleryImages[2] ?? null;
+                $imgBase   = base_url('uploads/gallery/');
+            ?>
+            <?php if ($heroImg): ?>
             <div class="md:col-span-2 aspect-[16/9] rounded-3xl overflow-hidden border-4 border-white shadow-xl group">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA61Kw773jF5CtCQ3qUE260EdlO9w0eZUGU6wndoODYInOKfFSCK7mFfIWyBK_W8aZ7y0Gx85_M78HFOGIZMBbHzDWLGmQc2hNQhjqaNwjOStmkPPhWI9ZtFNMRM2CbHrGf1jP1VpxSsHREZTU_EnfZr0z7Kx72dhGl3zHh9HgFVPRDjA9azKNQsGGIcMF4JZZRu3izfv7KfvoQ0N25xtoGpyd_-dqLEqOSR7qOPAAWaN6U2yUaLAnWHtWw5_71u7Pj0hpw5IM2Bw"/>
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                     src="<?= esc($imgBase . $heroImg['image_path']) ?>"
+                     alt="<?= esc(ld($heroImg, 'caption') ?: ld($heroImg, 'album_title')) ?>">
             </div>
+            <?php else: ?>
+            <div class="md:col-span-2 aspect-[16/9] rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-slate-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-6xl text-slate-300">photo_library</span>
+            </div>
+            <?php endif; ?>
             <div class="space-y-6">
-                <div class="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl group">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH890BV1h3sW5iCNIRUv4059FrrCr96EIumlkbk1SU-I8Y4GmEov71dNAYCnWGnYboxgjbRACZGFeL0OBjFNXpBBI2H1kXzHK3ciUFvG5uvpSL_qw63fIwkJK4Mmb46J6Xcs4IET8MTnPKp9fDZkhNm_8Un4fdzZCl4putkduKIyyhBv7rn-UC-SXCcdYmnqFVaJheInIZ7WXgm0jEFh_vU5MemQnhqWlj3QskCkbWBYz9COfy37bA_h-GpaYLzG_0r0L9H1Ceeg"/>
+                <div class="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl group bg-slate-100">
+                    <?php if ($thumbImg1): ?>
+                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                         src="<?= esc($imgBase . $thumbImg1['image_path']) ?>"
+                         alt="<?= esc(ld($thumbImg1, 'caption') ?: '') ?>">
+                    <?php else: ?>
+                    <div class="w-full h-full flex items-center justify-center"><span class="material-symbols-outlined text-4xl text-slate-300">image</span></div>
+                    <?php endif; ?>
                 </div>
-                <div class="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl group">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrDBbuQcYHjKU-BfNWzdOonvx4MtK_SVmSre7gZ1unt3CJUd_2ZvyKHn4_kwsmYC7uC1DCiciA0uGYrxEB2djQH2WrlMauBTUB4v1T8zA6syl4xpmdVQMXT3s3TycfmEABb-JZOMCSF0MEFM03FFryi2-zKDkPPYopU1Y1F3rsZ2Vqbt4Orx4IcyaxJ3-y0wWGuzYyDnGfSA2griacPp9UJE-4rY6Bfy_oLu3SE9WVgl9lySlB1d3Iyqax6RRuSTkqv8jn7R1Cxw"/>
+                <div class="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl group bg-slate-100">
+                    <?php if ($thumbImg2): ?>
+                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                         src="<?= esc($imgBase . $thumbImg2['image_path']) ?>"
+                         alt="<?= esc(ld($thumbImg2, 'caption') ?: '') ?>">
+                    <?php else: ?>
+                    <div class="w-full h-full flex items-center justify-center"><span class="material-symbols-outlined text-4xl text-slate-300">image</span></div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

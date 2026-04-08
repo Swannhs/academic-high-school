@@ -1,21 +1,37 @@
-<!-- Hero Banner with Breadcrumbs -->
-<section class="relative h-[320px] flex items-center overflow-hidden">
+<!-- Page Banner -->
+<section class="relative min-h-[400px] flex items-center overflow-hidden bg-slate-900">
     <div class="absolute inset-0 z-0">
-        <img alt="Campus Architecture" class="w-full h-full object-cover brightness-50 opacity-60" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif"/>
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-primary/30 opacity-90 mix-blend-multiply"></div>
+        <img class="w-full h-full object-cover opacity-20 grayscale" src="https://images.unsplash.com/photo-1543269664-76bc3997d9ea?q=80&w=2000" alt="Results Archive">
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
-        <nav class="flex items-center gap-2 text-primary-fixed mb-6 font-label tracking-wider text-xs uppercase font-semibold">
-            <a class="hover:text-emerald-400 text-white transition-colors" href="<?= base_url() ?>">Home</a>
-            <span class="material-symbols-outlined text-white text-sm">chevron_right</span>
-            <span class="text-emerald-400">Results Archive</span>
-        </nav>
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight max-w-2xl">
-            Performance <br/><span class="text-emerald-400">Archives</span>
-        </h1>
-        <p class="text-white/80 mt-4 max-w-md text-lg leading-relaxed font-body">
-            A comprehensive record of Prottasha Academic excellence across board and internal assessments.
-        </p>
+    
+    <!-- Floating Graphic -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-10 pointer-events-none hidden lg:block text-white">
+        <span class="material-symbols-outlined text-[600px] select-none" style="font-variation-settings: 'FILL' 1;">
+            leaderboard
+        </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full py-20 text-white">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+            <div class="flex-1">
+                <nav class="flex items-center gap-2 text-emerald-400 mb-8 text-[11px] uppercase font-black tracking-[0.3em]">
+                    <a class="hover:text-white transition-colors flex items-center gap-1" href="<?= base_url() ?>">
+                        <span class="material-symbols-outlined text-sm">home</span>
+                        <?= lang('App.breadcrumb.home') ?>
+                    </a>
+                    <span class="text-white/30">•</span>
+                    <span class="text-white/50"><?= lang('App.nav.results') ?></span>
+                </nav>
+                <h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] mb-8">
+                    <?= lang('App.headers.results') ?>
+                </h1>
+                <p class="text-white/70 max-w-xl text-xl font-medium leading-relaxed italic border-l-4 border-emerald-500/30 pl-6">
+                    "<?= lang('App.headers.results_sub') ?>"
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -77,7 +93,7 @@
                     <?php foreach ($boardResults as $res): ?>
                     <tr class="hover:bg-slate-50 transition-colors group">
                         <td class="px-8 py-6">
-                            <div class="font-black text-primary group-hover:text-accent transition-colors text-lg"><?= esc($res['exam_name']) ?></div>
+                            <div class="font-black text-primary group-hover:text-accent transition-colors text-lg"><?= esc(ld($res, 'exam_name')) ?></div>
                             <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wide mt-1"><?= esc($res['category']) ?></div>
                         </td>
                         <td class="px-8 py-6 text-center font-bold text-secondary text-lg"><?= esc($res['year']) ?></td>
@@ -116,8 +132,8 @@
                 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">description</span>
             </div>
             
-            <h3 class="text-2xl font-black text-slate-800 mb-2 font-headline leading-tight group-hover:text-primary transition-colors"><?= esc($int['exam_name']) ?></h3>
-            <p class="text-sm text-gray-500 mb-8 leading-relaxed font-medium"><?= esc($int['stats']) ?></p>
+            <h3 class="text-2xl font-black text-slate-800 mb-2 font-headline leading-tight group-hover:text-primary transition-colors"><?= esc(ld($int, 'exam_name')) ?></h3>
+            <p class="text-sm text-gray-500 mb-8 leading-relaxed font-medium"><?= esc(ld($int, 'description') ?: $int['stats']) ?></p>
             
             <div class="flex items-center justify-between pt-6 border-t border-slate-50">
                 <div class="flex flex-col">

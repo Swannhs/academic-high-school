@@ -9,7 +9,7 @@ class NoticeCategoryModel extends Model
     protected $table = 'notice_categories';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
-    protected $allowedFields = ['name', 'slug', 'status'];
+    protected $allowedFields = ['name', 'name_bn', 'slug', 'status'];
 
     public function withCount(): array
     {

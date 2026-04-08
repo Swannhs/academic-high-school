@@ -19,7 +19,17 @@ class Home extends BaseController
     {
         $noticeModel = new \App\Models\NoticeModel();
         $data['recentNotices'] = $noticeModel->where('status', 'active')->orderBy('publish_date', 'DESC')->limit(3)->findAll();
-        
+
+        // Fetch featured gallery images for homepage
+        $imageModel = new \App\Models\GalleryImageModel();
+        $data['featuredImages'] = $imageModel->db->table('gallery_images gi')
+            ->select('gi.*, ga.title as album_title, ga.title_bn as album_title_bn')
+            ->join('gallery_albums ga', 'ga.id = gi.album_id')
+            ->where('ga.status', 'active')
+            ->orderBy('ga.event_date', 'DESC')
+            ->limit(3)
+            ->get()->getResultArray();
+
         return $this->render('homepage', array_merge($data, ['title' => 'Home - Prottasha Academic']));
     }
 
@@ -107,43 +117,44 @@ class Home extends BaseController
 
     public function routines()
     {
-        return $this->render('routines', ['title' => 'Academic Routines - Prottasha Academic']);
+        $routineModel = new \App\Models\RoutineModel();
+        
+        $allRoutines = $routineModel->where('status', 'active')->orderBy('id', 'DESC')->findAll();
+        
+        $data['classRoutines'] = array_filter($allRoutines, function($r) {
+            return $r['type'] === 'class';
+        });
+        
+        $data['examRoutines'] = array_filter($allRoutines, function($r) {
+            return $r['type'] === 'exam';
+        });
+
+        return $this->render('routines', array_merge($data, ['title' => 'Academic Routines - Prottasha Academic']));
     }
 
     public function gallery()
     {
         $imageModel = new \App\Models\GalleryImageModel();
         
-        // Fetch images joined with album for categories
         $images = $imageModel->db->table('gallery_images gi')
-            ->select('gi.*, ga.title as album_title, ga.category')
+            ->select('gi.*, ga.title as album_title, ga.title_bn as album_title_bn, ga.category')
             ->join('gallery_albums ga', 'ga.id = gi.album_id')
             ->where('ga.status', 'active')
             ->orderBy('ga.event_date', 'DESC')
             ->get()->getResultArray();
 
-        // Map to what view expects
-        $data['images'] = array_map(function($img) {
-            $url = $img['image_path'];
-            if (!filter_var($url, FILTER_VALIDATE_URL)) {
-                $url = base_url('uploads/gallery/' . $url);
-            }
-            return [
-                'image_url' => $url,
-                'title'     => $img['caption'] ?: $img['album_title'],
-                'category'  => $img['category'] ?: 'Campus'
-            ];
-        }, $images);
+        $data['images'] = $images;
+        $data['categories'] = !empty($images) ? array_unique(array_filter(array_column($images, 'category'))) : [];
 
-        // Derive categories for the filter
-        $data['categories'] = array_unique(array_filter(array_column($data['images'], 'category')));
-
-        return $this->render('gallery', array_merge($data, ['title' => 'Photo Gallery - Prottasha Academic']));
+        return $this->render('gallery', $data);
     }
 
     public function downloads()
     {
-        return $this->render('downloads', ['title' => 'Downloads Center - Prottasha Academic']);
+        $downloadModel = new \App\Models\DownloadModel();
+        $data['downloads'] = $downloadModel->where('status', 'active')->orderBy('id', 'DESC')->findAll();
+        
+        return $this->render('downloads', array_merge($data, ['title' => 'Downloads Center - Prottasha Academic']));
     }
 
     public function academic_info()
@@ -166,7 +177,12 @@ class Home extends BaseController
 
     public function administration()
     {
-        return $this->render('administration', ['title' => 'Institutional Leadership - Prottasha Academic']);
+        $staffModel = new \App\Models\StaffModel();
+        $data['staffs'] = $staffModel->where('status', 'active')
+                                    ->orderBy('display_order', 'ASC')
+                                    ->findAll();
+                                    
+        return $this->render('administration', array_merge($data, ['title' => 'Institutional Leadership - Prottasha Academic']));
     }
 
     protected function getAcademicCalendarData(): array

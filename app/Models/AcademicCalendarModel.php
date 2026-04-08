@@ -12,10 +12,12 @@ class AcademicCalendarModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'title',
+        'title_bn',
         'category',
         'event_date',
         'end_date',
         'description',
+        'description_bn',
         'status',
         'created_by',
         'updated_by',

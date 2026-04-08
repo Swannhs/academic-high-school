@@ -34,3 +34,25 @@ if (! function_exists('status_badge_class')) {
         };
     }
 }
+
+if (! function_exists('ld')) {
+    /**
+     * Localized Data Helper
+     * Fetches the field based on current session locale (en or bn)
+     */
+    function ld($item, string $field): string
+    {
+        $lang = session('lang') ?? 'en';
+        $key = ($lang === 'bn') ? "{$field}_bn" : $field;
+        
+        $data = (array)$item;
+        
+        // Return translated field if exists and not empty
+        if ($lang === 'bn' && !empty($data[$key])) {
+            return (string)$data[$key];
+        }
+        
+        // Fallback to primary field (English)
+        return (isset($data[$field]) ? (string)$data[$field] : '');
+    }
+}

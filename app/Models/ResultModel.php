@@ -12,12 +12,15 @@ class ResultModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'title',
+        'title_bn',
         'exam_name',
+        'exam_name_bn',
         'class_name',
         'session_year',
         'file_path',
         'publish_date',
         'description',
+        'description_bn',
         'status',
         'category',
         'year',

@@ -9,7 +9,7 @@ class GalleryAlbumModel extends Model
     protected $table = 'gallery_albums';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
-    protected $allowedFields = ['title', 'category', 'cover_image', 'event_date', 'description', 'status'];
+    protected $allowedFields = ['title', 'title_bn', 'category', 'cover_image', 'event_date', 'description', 'description_bn', 'status'];
 
     public function withImageCount(): array
     {

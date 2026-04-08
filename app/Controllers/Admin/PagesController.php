@@ -32,16 +32,21 @@ class PagesController extends AdminBaseController
         }
         $image = $this->uploadFile('featured_image', 'pages');
         $this->model->insert([
-            'title'            => $this->request->getPost('title'),
-            'slug'             => $this->request->getPost('slug'),
-            'banner_title'     => $this->request->getPost('banner_title'),
-            'content'          => $this->request->getPost('content'),
-            'featured_image'   => $image,
-            'status'           => $this->request->getPost('status') ?: 'draft',
-            'meta_title'       => $this->request->getPost('meta_title'),
-            'meta_description' => $this->request->getPost('meta_description'),
-            'created_by'       => $this->adminUser['id'],
-            'updated_by'       => $this->adminUser['id'],
+            'title'               => $this->request->getPost('title'),
+            'title_bn'            => $this->request->getPost('title_bn'),
+            'slug'                => $this->request->getPost('slug'),
+            'banner_title'        => $this->request->getPost('banner_title'),
+            'banner_title_bn'     => $this->request->getPost('banner_title_bn'),
+            'content'             => $this->request->getPost('content'),
+            'content_bn'          => $this->request->getPost('content_bn'),
+            'featured_image'      => $image,
+            'status'              => $this->request->getPost('status') ?: 'draft',
+            'meta_title'          => $this->request->getPost('meta_title'),
+            'meta_title_bn'       => $this->request->getPost('meta_title_bn'),
+            'meta_description'    => $this->request->getPost('meta_description'),
+            'meta_description_bn' => $this->request->getPost('meta_description_bn'),
+            'created_by'          => $this->adminUser['id'] ?? null,
+            'updated_by'          => $this->adminUser['id'] ?? null,
         ]);
         return redirect()->to(base_url('admin/pages'))->with('success', 'Page created.');
     }
@@ -64,15 +69,20 @@ class PagesController extends AdminBaseController
         }
         $image = $this->uploadFile('featured_image', 'pages', $page['featured_image']);
         $this->model->update($id, [
-            'title'            => $this->request->getPost('title'),
-            'slug'             => $this->request->getPost('slug'),
-            'banner_title'     => $this->request->getPost('banner_title'),
-            'content'          => $this->request->getPost('content'),
-            'featured_image'   => $image,
-            'status'           => $this->request->getPost('status'),
-            'meta_title'       => $this->request->getPost('meta_title'),
-            'meta_description' => $this->request->getPost('meta_description'),
-            'updated_by'       => $this->adminUser['id'],
+            'title'               => $this->request->getPost('title'),
+            'title_bn'            => $this->request->getPost('title_bn'),
+            'slug'                => $this->request->getPost('slug'),
+            'banner_title'        => $this->request->getPost('banner_title'),
+            'banner_title_bn'     => $this->request->getPost('banner_title_bn'),
+            'content'             => $this->request->getPost('content'),
+            'content_bn'          => $this->request->getPost('content_bn'),
+            'featured_image'      => $image,
+            'status'              => $this->request->getPost('status'),
+            'meta_title'          => $this->request->getPost('meta_title'),
+            'meta_title_bn'       => $this->request->getPost('meta_title_bn'),
+            'meta_description'    => $this->request->getPost('meta_description'),
+            'meta_description_bn' => $this->request->getPost('meta_description_bn'),
+            'updated_by'          => $this->adminUser['id'] ?? null,
         ]);
         return redirect()->to(base_url('admin/pages'))->with('success', 'Page updated.');
     }

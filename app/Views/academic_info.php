@@ -1,23 +1,46 @@
 <!-- Hero Banner -->
-<section class="relative h-[360px] flex items-center overflow-hidden bg-primary">
+<section class="relative min-h-[400px] flex items-center overflow-hidden bg-slate-900">
+    <!-- Animated Gradient Background -->
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover brightness-50 opacity-40"
-             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvsu06syM6Sz8RqbYRfVgP7SmO5Ythr1COxoY1q7hbzJuDHPL9lHfo_cvBuRIgbhRcgHieM1XLgMq3V8qvJt7_g2X-4RwLdxoPKgBgbrCNBQs6Ig1IgKte2EVYwwWMWWSq13ZBNL7EhrvW7wDc5Nfv_HO63VHkBzYvNWqwGsZ_q-c63I-mdcPrvRlJwlMO2u0HdKojFNDHlDLlDjTEEWzGCDZNVOqt04Gqn1LIq3DD1E4FCPPjCsu1R0MxtqeONES6vDmm-ApMrg"
-             alt="School Library">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-primary/30 opacity-90 mix-blend-multiply"></div>
+        <img class="w-full h-full object-cover opacity-30 grayscale" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2000" alt="Academic Information">
+        
+        <!-- Decorative Overlays -->
+        <div class="absolute top-0 right-0 w-[500px] h-full bg-gradient-to-l from-primary/20 to-transparent"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
-        <nav class="flex items-center gap-2 text-white/60 mb-6 text-[10px] uppercase font-black tracking-[0.2em]">
-            <a class="hover:text-emerald-400 transition-colors" href="<?= base_url() ?>">Home</a>
-            <span class="material-symbols-outlined text-xs">chevron_right</span>
-            <span class="text-emerald-400">Academic Information</span>
-        </nav>
-        <h1 class="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter leading-none mb-6">
-            Academic <br/><span class="text-emerald-400">Excellence</span>
-        </h1>
-        <p class="text-white/70 max-w-xl text-lg font-medium leading-relaxed">
-            A comprehensive guide to the educational journey at Prottasha Academic — curriculum, schedules, and assessment frameworks.
-        </p>
+
+    <!-- Floating Graphic -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-10 pointer-events-none hidden lg:block text-white">
+        <span class="material-symbols-outlined text-[600px] select-none" style="font-variation-settings: 'FILL' 1;">
+            menu_book
+        </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full py-20 text-white">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+            <div class="flex-1">
+                <nav class="flex items-center gap-2 text-emerald-400 mb-8 text-[11px] uppercase font-black tracking-[0.3em]">
+                    <a class="hover:text-white transition-colors flex items-center gap-1" href="<?= base_url() ?>">
+                        <span class="material-symbols-outlined text-sm">home</span>
+                        <?= lang('App.breadcrumb.home') ?>
+                    </a>
+                    <span class="text-white/30">•</span>
+                    <span class="text-white/50"><?= lang('App.nav.academic_info') ?></span>
+                </nav>
+                
+                <h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] mb-8">
+                    <?= lang('App.headers.academic_info') ?>
+                </h1>
+                
+                <div class="flex items-center gap-6">
+                    <span class="h-px w-12 bg-emerald-500/50"></span>
+                    <p class="text-white/80 max-w-xl text-xl font-medium leading-relaxed italic">
+                        "<?= lang('App.headers.academic_info_sub') ?>"
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

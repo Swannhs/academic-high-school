@@ -1,21 +1,46 @@
 <!-- Hero Header -->
-<section class="relative h-[360px] flex items-center overflow-hidden">
+<section class="relative min-h-[400px] flex items-center overflow-hidden bg-slate-900">
+    <!-- Animated Gradient Background -->
     <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover" src="https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/npf-themes/theme_2025/assets/images/bg_main_july.gif" alt="Faculty Header">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-primary/30 opacity-90 mix-blend-multiply"></div>
+        <img class="w-full h-full object-cover opacity-30 grayscale" src="https://images.unsplash.com/photo-1577891721396-22c4b8565d93?q=80&w=2000" alt="Our Educators">
+        
+        <!-- Decorative Overlays -->
+        <div class="absolute top-0 right-0 w-[500px] h-full bg-gradient-to-l from-primary/20 to-transparent"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full">
-        <nav class="flex items-center gap-2 text-white/70 mb-6 text-[10px] uppercase font-black tracking-[0.2em]">
-            <a class="hover:text-emerald-400 transition-colors" href="<?= base_url() ?>">Home</a>
-            <span class="material-symbols-outlined text-xs">chevron_right</span>
-            <span class="text-emerald-400">Our Educators</span>
-        </nav>
-        <h1 class="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter leading-none mb-6">
-            Meet Our <br/><span class="text-emerald-400">Educators</span>
-        </h1>
-        <p class="text-white/70 max-w-2xl text-lg font-medium leading-relaxed">
-            Architects of the future. Our faculty brings together academic rigor, pedagogical innovation, and a shared commitment to excellence.
-        </p>
+
+    <!-- Floating Graphic -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-10 pointer-events-none hidden lg:block text-white">
+        <span class="material-symbols-outlined text-[600px] select-none" style="font-variation-settings: 'FILL' 1;">
+            group
+        </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full py-20 text-white">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+            <div class="flex-1">
+                <nav class="flex items-center gap-2 text-emerald-400 mb-8 text-[11px] uppercase font-black tracking-[0.3em]">
+                    <a class="hover:text-white transition-colors flex items-center gap-1" href="<?= base_url() ?>">
+                        <span class="material-symbols-outlined text-sm">home</span>
+                        <?= lang('App.breadcrumb.home') ?>
+                    </a>
+                    <span class="text-white/30">•</span>
+                    <span class="text-white/50"><?= lang('App.nav.teachers') ?></span>
+                </nav>
+                
+                <h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] mb-8">
+                    <?= lang('App.headers.teachers') ?>
+                </h1>
+                
+                <div class="flex items-center gap-6">
+                    <span class="h-px w-12 bg-emerald-500/50"></span>
+                    <p class="text-white/80 max-w-xl text-xl font-medium leading-relaxed italic">
+                        "<?= lang('App.headers.teachers_sub') ?>"
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -45,17 +70,16 @@
             </div>
             
             <div class="mb-6 relative z-10">
-                <h3 class="text-2xl font-black text-slate-800 font-headline tracking-tight group-hover:text-primary transition-colors"><?= esc($t['name']) ?></h3>
-                <p class="text-lg font-bold text-emerald-600 mt-1"><?= esc($t['name_bn']) ?></p>
+                <h3 class="text-2xl font-black text-slate-800 font-headline tracking-tight group-hover:text-primary transition-colors"><?= esc(ld($t, 'name')) ?></h3>
             </div>
             
             <div class="space-y-2 mb-8 relative z-10">
                 <span class="inline-block px-4 py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase tracking-widest rounded-full mb-2 shadow-lg shadow-slate-900/10">
-                    <?= esc($t['designation']) ?>
+                    <?= esc(ld($t, 'designation')) ?>
                 </span>
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><?= esc($t['department']) ?> Faculty</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><?= esc(ld($t, 'department')) ?> <?= lang('App.teachers.faculty') ?></p>
                 <div class="h-1 w-12 bg-slate-100 mx-auto rounded-full group-hover:w-24 group-hover:bg-primary/20 transition-all"></div>
-                <p class="text-sm text-slate-500 font-medium px-4"><?= esc($t['qualification']) ?></p>
+                <p class="text-sm text-slate-500 font-medium px-4"><?= esc(ld($t, 'qualification')) ?></p>
             </div>
             
             <div class="mt-auto pt-6 w-full border-t border-slate-50 flex justify-center gap-6 relative z-10">

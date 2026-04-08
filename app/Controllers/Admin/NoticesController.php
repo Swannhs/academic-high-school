@@ -52,6 +52,7 @@ class NoticesController extends AdminBaseController
         $this->requirePermission('manage_notices');
         $rules = [
             'title'       => 'required|max_length[200]',
+            'title_bn'    => 'permit_empty|max_length[255]',
             'category_id' => 'required|integer',
             'status'      => 'required|in_list[active,inactive]',
         ];
@@ -60,17 +61,20 @@ class NoticesController extends AdminBaseController
         }
         $attachment = $this->uploadFile('attachment', 'notices');
         $this->model->insert([
-            'title'             => $this->request->getPost('title'),
-            'slug'              => url_title($this->request->getPost('title'), '-', true),
-            'category_id'       => $this->request->getPost('category_id'),
-            'short_description' => $this->request->getPost('short_description'),
-            'content'           => $this->request->getPost('content'),
-            'attachment'        => $attachment,
-            'publish_date'      => $this->request->getPost('publish_date') ?: date('Y-m-d'),
-            'is_featured'       => $this->request->getPost('is_featured') ? 1 : 0,
-            'status'            => $this->request->getPost('status'),
-            'created_by'        => $this->adminUser['id'],
-            'created_at'        => date('Y-m-d H:i:s'),
+            'title'                => $this->request->getPost('title'),
+            'title_bn'             => $this->request->getPost('title_bn'),
+            'slug'                 => url_title($this->request->getPost('title'), '-', true),
+            'category_id'          => $this->request->getPost('category_id'),
+            'short_description'    => $this->request->getPost('short_description'),
+            'short_description_bn' => $this->request->getPost('short_description_bn'),
+            'content'              => $this->request->getPost('content'),
+            'content_bn'           => $this->request->getPost('content_bn'),
+            'attachment'           => $attachment,
+            'publish_date'         => $this->request->getPost('publish_date') ?: date('Y-m-d'),
+            'is_featured'          => $this->request->getPost('is_featured') ? 1 : 0,
+            'status'               => $this->request->getPost('status'),
+            'created_by'           => $this->adminUser['id'],
+            'created_at'           => date('Y-m-d H:i:s'),
         ]);
         return redirect()->to(base_url('admin/notices'))->with('success', 'Notice created successfully.');
     }
@@ -103,15 +107,18 @@ class NoticesController extends AdminBaseController
         }
         $attachment = $this->uploadFile('attachment', 'notices', $notice['attachment']);
         $this->model->update($id, [
-            'title'             => $this->request->getPost('title'),
-            'category_id'       => $this->request->getPost('category_id'),
-            'short_description' => $this->request->getPost('short_description'),
-            'content'           => $this->request->getPost('content'),
-            'attachment'        => $attachment,
-            'publish_date'      => $this->request->getPost('publish_date'),
-            'is_featured'       => $this->request->getPost('is_featured') ? 1 : 0,
-            'status'            => $this->request->getPost('status'),
-            'updated_at'        => date('Y-m-d H:i:s'),
+            'title'                => $this->request->getPost('title'),
+            'title_bn'             => $this->request->getPost('title_bn'),
+            'category_id'          => $this->request->getPost('category_id'),
+            'short_description'    => $this->request->getPost('short_description'),
+            'short_description_bn' => $this->request->getPost('short_description_bn'),
+            'content'              => $this->request->getPost('content'),
+            'content_bn'           => $this->request->getPost('content_bn'),
+            'attachment'           => $attachment,
+            'publish_date'         => $this->request->getPost('publish_date'),
+            'is_featured'          => $this->request->getPost('is_featured') ? 1 : 0,
+            'status'               => $this->request->getPost('status'),
+            'updated_at'           => date('Y-m-d H:i:s'),
         ]);
         return redirect()->to(base_url('admin/notices'))->with('success', 'Notice updated successfully.');
     }

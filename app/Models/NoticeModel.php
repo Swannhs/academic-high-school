@@ -12,10 +12,13 @@ class NoticeModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'title',
+        'title_bn',
         'slug',
         'category_id',
         'short_description',
+        'short_description_bn',
         'content',
+        'content_bn',
         'attachment',
         'publish_date',
         'is_featured',

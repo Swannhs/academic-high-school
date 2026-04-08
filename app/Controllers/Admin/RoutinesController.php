@@ -41,11 +41,13 @@ class RoutinesController extends AdminBaseController
         $file = $this->uploadFile('file_path', 'routines', null, ['pdf']);
         $this->model->insert([
             'title'        => $this->request->getPost('title'),
+            'title_bn'     => $this->request->getPost('title_bn'),
             'routine_type' => $this->request->getPost('routine_type'),
             'class_name'   => $this->request->getPost('class_name'),
             'file_path'    => $file,
             'publish_date' => $this->request->getPost('publish_date') ?: date('Y-m-d'),
             'notes'        => $this->request->getPost('notes'),
+            'notes_bn'     => $this->request->getPost('notes_bn'),
             'status'       => $this->request->getPost('status') ?: 'active',
             'created_by'   => $this->adminUser['id'] ?? null,
         ]);
@@ -75,11 +77,13 @@ class RoutinesController extends AdminBaseController
         $file = $this->uploadFile('file_path', 'routines', $routine['file_path'], ['pdf']);
         $this->model->update($id, [
             'title'        => $this->request->getPost('title'),
+            'title_bn'     => $this->request->getPost('title_bn'),
             'routine_type' => $this->request->getPost('routine_type'),
             'class_name'   => $this->request->getPost('class_name'),
             'file_path'    => $file,
             'publish_date' => $this->request->getPost('publish_date'),
             'notes'        => $this->request->getPost('notes'),
+            'notes_bn'     => $this->request->getPost('notes_bn'),
             'status'       => $this->request->getPost('status'),
             'updated_by'   => $this->adminUser['id'] ?? null,
         ]);

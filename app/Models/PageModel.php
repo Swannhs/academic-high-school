@@ -10,7 +10,7 @@ class PageModel extends Model
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'title', 'slug', 'banner_title', 'content', 'featured_image',
-        'status', 'meta_title', 'meta_description', 'created_by', 'updated_by',
+        'title', 'title_bn', 'slug', 'banner_title', 'banner_title_bn', 'content', 'content_bn', 'featured_image',
+        'status', 'meta_title', 'meta_title_bn', 'meta_description', 'meta_description_bn', 'created_by', 'updated_by',
     ];
 }

@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
 
 // ─── Public routes ───────────────────────────────────────────────────
 $routes->get('/',              'Home::index');
+$routes->get('lang/(:segment)', 'LangController::index/$1');
 $routes->get('about',          'Home::about');
 $routes->get('teachers',       'Home::teachers');
 $routes->get('admission',      'Home::admission');
@@ -29,6 +30,7 @@ $routes->get( 'admin/logout', 'Admin\AuthController::logout');
 $routes->group('admin', ['filter' => 'auth'], function($routes) {
 
     $routes->get('/', 'Admin\DashboardController::index');
+    $routes->addRedirect('dashboard', 'admin');
 
     // Notices
     $routes->get( 'notices',                    'Admin\NoticesController::index');

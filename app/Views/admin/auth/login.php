@@ -40,8 +40,8 @@
     <div class="text-center">
         <div class="login-card">
             <div class="login-logo"><i class="bi bi-mortarboard-fill"></i></div>
-            <h2 class="text-center mb-1">Admin Panel</h2>
-            <p class="text-muted text-center mb-4" style="font-size:.85rem;">Prottasha Academic High School</p>
+            <h2 class="text-center mb-1"><?= lang('App.admin.login_title') ?></h2>
+            <p class="text-muted text-center mb-4" style="font-size:.85rem;"><?= lang('App.admin.login_subtitle') ?></p>
 
             <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger py-2 small"><i class="bi bi-exclamation-triangle me-1"></i>
@@ -57,35 +57,35 @@
             <form action="<?= base_url('admin/login') ?>" method="POST">
                 <?= csrf_field() ?>
                 <div class="mb-3">
-                    <label class="form-label">Email or Username</label>
+                    <label class="form-label"><?= lang('App.admin.email_username') ?></label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-person"></i></span>
                         <input type="text" name="login" class="form-control <?= isset($errors['login']) ? 'is-invalid' : '' ?>"
-                               value="<?= old('login') ?>" placeholder="admin@prottasha.edu.bd" required autofocus>
+                                value="<?= old('login') ?>" placeholder="admin@prottasha.edu.bd" required autofocus>
                     </div>
                     <?php if (isset($errors['login'])): ?>
                     <div class="invalid-feedback d-block small"><?= esc($errors['login']) ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label">Password</label>
+                    <label class="form-label"><?= lang('App.admin.password') ?></label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-lock"></i></span>
                         <input type="password" name="password" class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>"
-                               placeholder="••••••••" required>
+                                placeholder="••••••••" required>
                     </div>
                     <?php if (isset($errors['password'])): ?>
                     <div class="invalid-feedback d-block small"><?= esc($errors['password']) ?></div>
                     <?php endif; ?>
                 </div>
                 <button type="submit" class="btn btn-login btn-primary text-white w-100">
-                    <i class="bi bi-box-arrow-in-right me-2"></i>Sign In to Admin
+                    <i class="bi bi-box-arrow-in-right me-2"></i><?= lang('App.admin.sign_in') ?>
                 </button>
             </form>
-            <a href="<?= base_url('admin/forgot-password') ?>" class="d-inline-block mt-3 small text-decoration-none">Forgot password?</a>
+            <a href="<?= base_url('admin/forgot-password') ?>" class="d-inline-block mt-3 small text-decoration-none"><?= lang('App.admin.forgot_pw') ?></a>
         </div>
         <a href="<?= base_url('/') ?>" class="back-link mt-3 d-block">
-            <i class="bi bi-arrow-left me-1"></i>Back to website
+            <i class="bi bi-arrow-left me-1"></i><?= lang('App.admin.back_to_site') ?>
         </a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -23,17 +23,29 @@ class SettingsController extends AdminBaseController
     {
         $this->requirePermission('manage_settings');
         if (! $this->validate([
-            'email' => 'permit_empty|valid_email',
-            'facebook_url' => 'permit_empty|valid_url_strict',
-            'twitter_url' => 'permit_empty|valid_url_strict',
-            'youtube_url' => 'permit_empty|valid_url_strict',
+            'email'        => 'permit_empty|valid_email',
+            'facebook_url' => 'permit_empty',
+            'youtube_url'  => 'permit_empty',
         ])) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $textFields = [
-            'school_name','school_name_bn','eiin','tagline','email','phone','address',
-            'facebook_url','twitter_url','youtube_url',
-            'map_embed','office_hours','homepage_hero','principal_message_snippet',
+            'school_name', 'school_name_bn',
+            'eiin', 'tagline',
+            'email', 'phone', 'address', 'office_hours',
+            'facebook_url', 'twitter_url', 'youtube_url',
+            // Principal
+            'principal_name', 'principal_name_bn',
+            'principal_title', 'principal_title_bn',
+            'principal_message_snippet', 'principal_message_snippet_bn',
+            // Homepage
+            'homepage_hero', 'homepage_hero_bn',
+            // Stats
+            'stat_1_value', 'stat_1_label', 'stat_1_label_bn',
+            'stat_2_value', 'stat_2_label', 'stat_2_label_bn',
+            'stat_3_value', 'stat_3_label', 'stat_3_label_bn',
+            // Legacy
+            'map_embed',
         ];
         foreach ($textFields as $field) {
             if (($val = $this->request->getPost($field)) !== null) {

@@ -1,137 +1,106 @@
-<!-- Notices Page -->
-<div class="max-w-7xl mx-auto px-8 py-16">
-<!-- Header Section -->
-<section class="mb-20">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b-2 border-surface-container pb-8">
-<div>
-<span class="text-tertiary font-bold tracking-widest text-xs uppercase mb-2 block">Bulletin &amp; Announcements</span>
-<h2 class="text-5xl font-black font-headline text-primary tracking-tighter leading-none">Official Notices</h2>
-<p class="text-on-surface-variant mt-4 max-w-lg leading-relaxed">
-                            Stay updated with the latest academic schedules, administrative circulars, and institutional news.
-                        </p>
-</div>
-<!-- Filter/Search Bar -->
-<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-<div class="relative group flex-1 md:w-64">
-<span class="absolute left-4 top-1/2 -translate-y-1/2 text-outline material-symbols-outlined" data-icon="search">search</span>
-<input class="w-full pl-12 pr-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-sm" placeholder="Search notices..." type="text"/>
-</div>
-<div class="relative md:w-40">
-<select class="w-full appearance-none pl-4 pr-10 py-3 bg-surface-container-high rounded-lg border-none text-sm font-semibold text-primary focus:ring-2 focus:ring-primary">
-<option>Year: 2024</option>
-<option>Year: 2023</option>
-<option>All Years</option>
-</select>
-<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
-</div>
-</div>
-</div>
+<!-- Page Banner -->
+<section class="relative min-h-[400px] flex items-center overflow-hidden bg-slate-900 border-b border-white/5">
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-primary/30 opacity-90 mix-blend-multiply"></div>
+        <img class="w-full h-full object-cover opacity-20 grayscale" src="https://images.unsplash.com/photo-1544207240-8b1025eb7aeb?q=80&w=2000" alt="Notices Header">
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/10 rounded-full blur-[120px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 relative z-10 w-full py-20 text-white">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
+            <div class="flex-1">
+                <nav class="flex items-center gap-2 text-emerald-400 mb-8 text-[11px] uppercase font-black tracking-[0.3em]">
+                    <a class="hover:text-white transition-colors flex items-center gap-1" href="<?= base_url() ?>">
+                        <span class="material-symbols-outlined text-sm">home</span>
+                        <?= lang('App.breadcrumb.home') ?>
+                    </a>
+                    <span class="text-white/30">•</span>
+                    <span class="text-white/50"><?= lang('App.nav.notices') ?></span>
+                </nav>
+                <h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] mb-8">
+                    <?= lang('App.headers.notices') ?>
+                </h1>
+                <p class="text-white/70 max-w-xl text-xl font-medium leading-relaxed italic border-l-4 border-emerald-500/30 pl-6">
+                    "<?= lang('App.headers.notices_sub') ?>"
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
-<!-- Notices Grid / List -->
-<section class="space-y-6">
-<!-- Notice Card 1: Featured -->
-<article class="group relative bg-surface-container-lowest p-8 rounded-xl flex flex-col md:flex-row gap-8 items-start cursor-pointer transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,33,22,0.06)] overflow-hidden">
-<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
-<div class="flex-shrink-0 w-24 text-center">
-<span class="block text-4xl font-black text-primary font-headline">15</span>
-<span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">OCT 2024</span>
+
+<div class="max-w-7xl mx-auto px-8 py-24">
+    <section class="mb-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-slate-100 pb-12">
+            <div>
+                <span class="text-primary font-black tracking-[0.3em] uppercase text-[10px] bg-emerald-50 px-3 py-1 rounded-full"><?= lang('App.notices.bulletin') ?></span>
+                <h2 class="text-4xl font-black font-headline text-slate-900 mt-4 tracking-tighter leading-none"><?= lang('App.notices.all_circulars') ?></h2>
+            </div>
+            
+            <div class="flex flex-wrap gap-3">
+                <a href="<?= base_url('notices') ?>" class="px-5 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest <?= !request()->getGet('category') ? 'bg-primary text-white border-primary' : 'bg-white text-slate-500 hover:bg-slate-50' ?>">All</a>
+                <?php foreach($categories as $cat): ?>
+                    <a href="<?= base_url('notices?category='.$cat['id']) ?>" 
+                       class="px-5 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest <?= request()->getGet('category') == $cat['id'] ? 'bg-primary text-white border-primary' : 'bg-white text-slate-500 hover:bg-slate-50' ?>">
+                        <?= esc(ld($cat, 'name')) ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notices Grid -->
+    <section class="space-y-6">
+        <?php if (empty($notices)): ?>
+            <div class="text-center py-20 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+                <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">description</span>
+                <h3 class="text-xl font-bold text-slate-400">No notices found in this category.</h3>
+            </div>
+        <?php else: foreach($notices as $notice): 
+            $date = strtotime($notice['publish_date']);
+        ?>
+            <article class="group relative bg-white p-8 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-8 items-start cursor-pointer transition-all duration-300 hover:shadow-xl hover:border-primary/20" onclick="window.location='<?= base_url('notice-details?id='.$notice['id']) ?>'">
+                <div class="flex-shrink-0 w-24 text-center py-4 bg-slate-50 rounded-xl group-hover:bg-primary group-hover:text-white transition-colors">
+                    <span class="block text-4xl font-black font-headline leading-none"><?= date('d', $date) ?></span>
+                    <span class="block text-[10px] font-black uppercase tracking-widest opacity-60 mt-1"><?= date('M Y', $date) ?></span>
+                </div>
+                
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-primary/5 text-primary-dark px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border border-primary/10">
+                            <?= esc($notice['category_name'] ?? 'Notice') ?>
+                        </span>
+                        <?php if(!empty($notice['is_featured'])): ?>
+                            <span class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border border-red-100 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></span>
+                                Featured
+                            </span>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <h3 class="text-2xl font-black text-slate-900 font-headline leading-tight mb-4 group-hover:text-primary transition-colors"><?= esc(ld($notice, 'title')) ?></h3>
+                    
+                    <p class="text-slate-500 font-medium leading-relaxed max-w-4xl line-clamp-2">
+                        <?= esc(strip_tags(ld($notice, 'short_description'))) ?>
+                    </p>
+                    
+                    <?php if($notice['attachment']): ?>
+                        <div class="mt-8 flex items-center gap-4">
+                            <a href="<?= base_url('uploads/notices/'.$notice['attachment']) ?>" target="_blank" class="flex items-center gap-2 text-primary font-black text-[10px] uppercase tracking-widest bg-emerald-50 px-4 py-2.5 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
+                                <span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+                                View Attachment
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="self-center hidden md:block">
+                    <span class="material-symbols-outlined text-3xl text-slate-200 group-hover:text-primary group-hover:translate-x-2 transition-all">arrow_forward</span>
+                </div>
+            </article>
+        <?php endforeach; endif; ?>
+    </section>
+
+    <!-- Pagination -->
+    <div class="mt-16">
+        <?= $pager->links() ?>
+    </div>
 </div>
-<div class="flex-1">
-<div class="flex items-center gap-3 mb-2">
-<span class="bg-primary/10 text-primary px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Exam Schedule</span>
-<span class="bg-tertiary/10 text-tertiary px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Urgent</span>
-</div>
-<h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-4 group-hover:text-primary transition-colors">Final Examination Schedule for Class 6-10 (Academic Year 2024)</h3>
-<p class="text-on-surface-variant leading-relaxed max-w-3xl mb-6">
-                            Detailed routine for the upcoming final examinations has been finalized. Students are advised to collect their admit cards by the end of this month from the administrative office.
-                        </p>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-2 text-primary font-bold text-sm bg-primary-container/20 px-4 py-2 rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-all">
-<span class="material-symbols-outlined text-lg" data-icon="picture_as_pdf">picture_as_pdf</span>
-<span>Download Exam_Routine.pdf</span>
-</div>
-<span class="text-xs text-outline font-medium">342 KB • PDF File</span>
-</div>
-</div>
-<div class="self-center hidden md:block">
-<span class="material-symbols-outlined text-4xl text-surface-container-highest group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</article>
-<!-- Notice Card 2 -->
-<article class="group bg-surface-container-low p-8 rounded-xl flex flex-col md:flex-row gap-8 items-start cursor-pointer transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-[0_8px_24px_rgba(0,33,22,0.06)]">
-<div class="flex-shrink-0 w-24 text-center">
-<span class="block text-4xl font-black text-on-surface font-headline">12</span>
-<span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">OCT 2024</span>
-</div>
-<div class="flex-1">
-<div class="flex items-center gap-3 mb-2">
-<span class="bg-secondary/10 text-secondary px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Administration</span>
-</div>
-<h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-4 group-hover:text-primary transition-colors">Notice regarding Durga Puja and Autumn Vacation Holiday</h3>
-<p class="text-on-surface-variant leading-relaxed max-w-3xl mb-6">
-                            The school will remain closed from October 20th to October 28th on the occasion of Durga Puja. Regular academic activities will resume from the 29th.
-                        </p>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-2 text-outline font-bold text-sm bg-surface-container-highest px-4 py-2 rounded-lg group-hover:bg-secondary group-hover:text-on-secondary transition-all">
-<span class="material-symbols-outlined text-lg" data-icon="picture_as_pdf">picture_as_pdf</span>
-<span>Download Holiday_List.pdf</span>
-</div>
-</div>
-</div>
-</article>
-<!-- Notice Card 3 -->
-<article class="group bg-surface-container-low p-8 rounded-xl flex flex-col md:flex-row gap-8 items-start cursor-pointer transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-[0_8px_24px_rgba(0,33,22,0.06)]">
-<div class="flex-shrink-0 w-24 text-center">
-<span class="block text-4xl font-black text-on-surface font-headline">08</span>
-<span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">OCT 2024</span>
-</div>
-<div class="flex-1">
-<div class="flex items-center gap-3 mb-2">
-<span class="bg-tertiary/10 text-tertiary px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Awards</span>
-</div>
-<h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-4 group-hover:text-primary transition-colors">Results for Inter-School Science &amp; Tech Fair 2024</h3>
-<p class="text-on-surface-variant leading-relaxed max-w-3xl mb-6">
-                            Congratulations to all the participants and winners of the recently concluded Science Fair. The list of winners and runners-up is now available for download.
-                        </p>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-2 text-outline font-bold text-sm bg-surface-container-highest px-4 py-2 rounded-lg group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
-<span class="material-symbols-outlined text-lg" data-icon="picture_as_pdf">picture_as_pdf</span>
-<span>Download Result_Sheet.pdf</span>
-</div>
-</div>
-</div>
-</article>
-<!-- Notice Card 4 (No Attachment) -->
-<article class="group bg-surface-container-low p-8 rounded-xl flex flex-col md:flex-row gap-8 items-start cursor-pointer transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-[0_8px_24px_rgba(0,33,22,0.06)]">
-<div class="flex-shrink-0 w-24 text-center">
-<span class="block text-4xl font-black text-on-surface font-headline">02</span>
-<span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">OCT 2024</span>
-</div>
-<div class="flex-1">
-<div class="flex items-center gap-3 mb-2">
-<span class="bg-secondary/10 text-secondary px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Uniform</span>
-</div>
-<h3 class="text-2xl font-bold text-on-surface font-headline leading-tight mb-4 group-hover:text-primary transition-colors">Reminder: Winter Uniform Guidelines for Students</h3>
-<p class="text-on-surface-variant leading-relaxed max-w-3xl">
-                            All students are requested to adhere to the prescribed winter uniform starting from November 1st. Please refer to the student handbook for specific details regarding blazer colors and sweater patterns.
-                        </p>
-</div>
-</article>
-</section>
-<!-- Pagination -->
-<div class="mt-16 flex justify-center">
-<nav class="flex items-center gap-2">
-<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-low text-outline hover:bg-primary hover:text-on-primary transition-all">
-<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
-</button>
-<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary text-white font-bold shadow-md">1</button>
-<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-low text-on-surface font-bold hover:bg-surface-container-high">2</button>
-<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-low text-on-surface font-bold hover:bg-surface-container-high">3</button>
-<span class="px-2 text-outline">...</span>
-<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-low text-on-surface font-bold hover:bg-surface-container-high">12</button>
-<button class="w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container-low text-outline hover:bg-primary hover:text-on-primary transition-all">
-<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
-</button>
-</nav>
-</div>
-</div><!-- /.max-w-7xl -->

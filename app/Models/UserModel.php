@@ -34,10 +34,11 @@ class UserModel extends Model
 
     public function getPermissions(int $roleId): array
     {
-        $rows = $this->db->table('role_permissions')
-            ->select('permission_key')
-            ->where('role_id', $roleId)
+        $rows = $this->db->table('role_permissions rp')
+            ->select('p.key')
+            ->join('permissions p', 'p.id = rp.permission_id')
+            ->where('rp.role_id', $roleId)
             ->get()->getResultArray();
-        return array_column($rows, 'permission_key');
+        return array_column($rows, 'key');
     }
 }

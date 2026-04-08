@@ -31,15 +31,19 @@ class NoticeCategoriesController extends AdminBaseController
     public function store()
     {
         $this->requirePermission('manage_notices');
-        $rules = ['name' => 'required|max_length[120]|is_unique[notice_categories.name]'];
+        $rules = [
+            'name'    => 'required|max_length[120]|is_unique[notice_categories.name]',
+            'name_bn' => 'permit_empty|max_length[120]'
+        ];
         if (! $this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $name = $this->request->getPost('name');
         $this->model->insert([
-            'name'   => $name,
-            'slug'   => url_title($name, '-', true),
-            'status' => $this->request->getPost('status') ?: 'active',
+            'name'    => $name,
+            'name_bn' => $this->request->getPost('name_bn'),
+            'slug'    => url_title($name, '-', true),
+            'status'  => $this->request->getPost('status') ?: 'active',
         ]);
         return redirect()->to(base_url('admin/notice-categories'))->with('success', 'Category created.');
     }
@@ -55,15 +59,19 @@ class NoticeCategoriesController extends AdminBaseController
     public function update(int $id)
     {
         $this->requirePermission('manage_notices');
-        $rules = ['name' => "required|max_length[120]|is_unique[notice_categories.name,id,{$id}]"];
+        $rules = [
+            'name'    => "required|max_length[120]|is_unique[notice_categories.name,id,{$id}]",
+            'name_bn' => 'permit_empty|max_length[120]'
+        ];
         if (! $this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $name = $this->request->getPost('name');
         $this->model->update($id, [
-            'name'   => $name,
-            'slug'   => url_title($name, '-', true),
-            'status' => $this->request->getPost('status'),
+            'name'    => $name,
+            'name_bn' => $this->request->getPost('name_bn'),
+            'slug'    => url_title($name, '-', true),
+            'status'  => $this->request->getPost('status'),
         ]);
         return redirect()->to(base_url('admin/notice-categories'))->with('success', 'Category updated.');
     }

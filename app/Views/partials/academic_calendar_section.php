@@ -121,9 +121,9 @@ $categoryColors = [
                                             <?= esc(ucfirst($event['category'])) ?>
                                         </span>
                                     </div>
-                                    <h4 class="font-black text-slate-800"><?= esc($event['title']) ?></h4>
-                                    <?php if (! empty($event['description'])): ?>
-                                        <p class="mt-2 text-sm text-slate-500 font-medium leading-relaxed"><?= esc($event['description']) ?></p>
+                                    <h4 class="font-black text-slate-800"><?= esc(ld($event, 'title')) ?></h4>
+                                    <?php if (! empty(ld($event, 'description'))): ?>
+                                        <p class="mt-2 text-sm text-slate-500 font-medium leading-relaxed"><?= esc(ld($event, 'description')) ?></p>
                                     <?php endif; ?>
                                 </article>
                             <?php endforeach; ?>
@@ -148,8 +148,8 @@ $categoryColors = [
                                         <span class="material-symbols-outlined text-xs"><?= $cat['icon'] ?></span>
                                         <?= esc(ucfirst($ev['category'])) ?>
                                     </span>
-                                    <h5 class="font-black text-slate-800 group-hover:text-primary transition-colors"><?= esc($ev['title']) ?></h5>
-                                    <p class="text-slate-500 text-sm font-medium"><?= esc($ev['description']) ?></p>
+                                    <h5 class="font-black text-slate-800 group-hover:text-primary transition-colors"><?= esc(ld($ev, 'title')) ?></h5>
+                                    <p class="text-slate-500 text-sm font-medium"><?= esc(ld($ev, 'description')) ?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -222,8 +222,8 @@ $categoryColors = [
                                     $cat = $categoryColors[$event["category"]] ?? $categoryColors["general"];
 
                                     return [
-                                        "title" => $event["title"],
-                                        "description" => $event["description"] ?? "",
+                                        "title" => ld($event, "title"),
+                                        "description" => ld($event, "description"),
                                         "category" => ucfirst($event["category"] ?? "general"),
                                         "badge" => $cat["badge"],
                                         "icon" => $cat["icon"],
@@ -247,7 +247,7 @@ $categoryColors = [
                                     class="w-full flex items-center gap-3 text-left rounded-2xl px-3 py-2 hover:bg-slate-50 transition-colors"
                                     data-calendar-day-jump="<?= (int) date('j', strtotime($ev['event_date'])) ?>">
                                 <span class="w-2 h-2 rounded-full shrink-0 <?= $cat['dot'] ?>"></span>
-                                <span class="text-[11px] font-bold text-slate-600"><?= date('d', strtotime($ev['event_date'])) ?> - <?= esc($ev['title']) ?></span>
+                                <span class="text-[11px] font-bold text-slate-600"><?= date('d', strtotime($ev['event_date'])) ?> - <?= esc(ld($ev, 'title')) ?></span>
                             </button>
                         <?php endforeach; ?>
                     </div>

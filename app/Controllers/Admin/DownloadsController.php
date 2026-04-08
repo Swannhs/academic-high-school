@@ -42,13 +42,15 @@ class DownloadsController extends AdminBaseController
         }
         $file = $this->uploadFile('file_path', 'downloads', null, ['pdf']);
         $this->model->insert([
-            'title'        => $this->request->getPost('title'),
-            'category'     => $this->request->getPost('category'),
-            'file_path'    => $file,
-            'description'  => $this->request->getPost('description'),
-            'status'       => $this->request->getPost('status') ?: 'active',
-            'publish_date' => $this->request->getPost('publish_date') ?: date('Y-m-d'),
-            'created_by'   => $this->adminUser['id'] ?? null,
+            'title'          => $this->request->getPost('title'),
+            'title_bn'       => $this->request->getPost('title_bn'),
+            'category'       => $this->request->getPost('category'),
+            'file_path'      => $file,
+            'description'    => $this->request->getPost('description'),
+            'description_bn' => $this->request->getPost('description_bn'),
+            'status'         => $this->request->getPost('status') ?: 'active',
+            'publish_date'   => $this->request->getPost('publish_date') ?: date('Y-m-d'),
+            'created_by'     => $this->adminUser['id'] ?? null,
         ]);
         return redirect()->to(base_url('admin/downloads'))->with('success', 'Download added.');
     }
@@ -71,13 +73,15 @@ class DownloadsController extends AdminBaseController
         }
         $file = $this->uploadFile('file_path', 'downloads', $item['file_path'], ['pdf']);
         $this->model->update($id, [
-            'title'        => $this->request->getPost('title'),
-            'category'     => $this->request->getPost('category'),
-            'file_path'    => $file,
-            'description'  => $this->request->getPost('description'),
-            'status'       => $this->request->getPost('status'),
-            'publish_date' => $this->request->getPost('publish_date'),
-            'updated_by'   => $this->adminUser['id'] ?? null,
+            'title'          => $this->request->getPost('title'),
+            'title_bn'       => $this->request->getPost('title_bn'),
+            'category'       => $this->request->getPost('category'),
+            'file_path'      => $file,
+            'description'    => $this->request->getPost('description'),
+            'description_bn' => $this->request->getPost('description_bn'),
+            'status'         => $this->request->getPost('status'),
+            'publish_date'   => $this->request->getPost('publish_date'),
+            'updated_by'     => $this->adminUser['id'] ?? null,
         ]);
         return redirect()->to(base_url('admin/downloads'))->with('success', 'Download updated.');
     }

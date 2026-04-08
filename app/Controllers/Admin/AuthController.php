@@ -50,7 +50,7 @@ class AuthController extends BaseController
                 'name'       => $user['name'],
                 'email'      => $user['email'],
                 'username'   => $user['username'],
-                'avatar'     => $user['avatar'],
+                'avatar'     => $user['avatar'] ?? null,
                 'role_id'    => $user['role_id'],
                 'role_name'  => $role['name'] ?? '',
                 'role_label' => $role['label'] ?? '',
