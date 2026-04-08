@@ -112,14 +112,31 @@ class Home extends BaseController
 
     public function gallery()
     {
-        $albumModel = new \App\Models\GalleryAlbumModel();
-        $data['albums'] = $albumModel->where('status', 'active')->orderBy('event_date', 'DESC')->findAll();
-        
-        // Add image counts
         $imageModel = new \App\Models\GalleryImageModel();
-        foreach ($data['albums'] as &$album) {
-            $album['image_count'] = $imageModel->where('album_id', $album['id'])->countAllResults();
-        }
+        
+        // Fetch images joined with album for categories
+        $images = $imageModel->db->table('gallery_images gi')
+            ->select('gi.*, ga.title as album_title, ga.category')
+            ->join('gallery_albums ga', 'ga.id = gi.album_id')
+            ->where('ga.status', 'active')
+            ->orderBy('ga.event_date', 'DESC')
+            ->get()->getResultArray();
+
+        // Map to what view expects
+        $data['images'] = array_map(function($img) {
+            $url = $img['image_path'];
+            if (!filter_var($url, FILTER_VALIDATE_URL)) {
+                $url = base_url('uploads/gallery/' . $url);
+            }
+            return [
+                'image_url' => $url,
+                'title'     => $img['caption'] ?: $img['album_title'],
+                'category'  => $img['category'] ?: 'Campus'
+            ];
+        }, $images);
+
+        // Derive categories for the filter
+        $data['categories'] = array_unique(array_filter(array_column($data['images'], 'category')));
 
         return $this->render('gallery', array_merge($data, ['title' => 'Photo Gallery - Prottasha Academic']));
     }
