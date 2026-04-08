@@ -6,13 +6,25 @@
             <div class="card mb-4">
                 <div class="card-header">General Information</div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">School Name</label>
-                        <input type="text" name="school_name" class="form-control" value="<?= esc($settings['school_name'] ?? '') ?>">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">School Name (English)</label>
+                            <input type="text" name="school_name" class="form-control" value="<?= esc($settings['school_name'] ?? '') ?>">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">School Name (Bengali)</label>
+                            <input type="text" name="school_name_bn" class="form-control" value="<?= esc($settings['school_name_bn'] ?? '') ?>">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Tagline</label>
-                        <input type="text" name="tagline" class="form-control" value="<?= esc($settings['tagline'] ?? '') ?>">
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label class="form-label">Tagline / Motto</label>
+                            <input type="text" name="tagline" class="form-control" value="<?= esc($settings['tagline'] ?? '') ?>">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">EIIN Number</label>
+                            <input type="text" name="eiin" class="form-control" value="<?= esc($settings['eiin'] ?? '') ?>">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">

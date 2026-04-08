@@ -9,12 +9,12 @@
     <div class="relative z-10 w-full px-4 lg:px-16 text-white">
         <div class="max-w-4xl space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
             <div class="space-y-4">
-                <p class="text-xs lg:text-sm font-black uppercase tracking-widest text-emerald-400 bg-emerald-400/10 w-fit px-4 py-2 rounded-full border border-emerald-400/20">Established 1998 • Excellence in Education</p>
-                <h2 class="text-4xl lg:text-7xl font-black leading-none drop-shadow-lg">প্রত্যাশা একাডেমিক উচ্চ বিদ্যালয়</h2>
-                <h3 class="text-2xl lg:text-4xl font-bold opacity-80 uppercase tracking-tight">Prottasha Academic High School</h3>
+                <p class="text-xs lg:text-sm font-black uppercase tracking-widest text-emerald-400 bg-emerald-400/10 w-fit px-4 py-2 rounded-full border border-emerald-400/20"><?= esc($settings['tagline'] ?? 'Established 1998 • Excellence in Education') ?></p>
+                <h2 class="text-4xl lg:text-7xl font-black leading-none drop-shadow-lg"><?= esc($settings['school_name_bn'] ?? 'প্রত্যাশা একাডেমিক উচ্চ বিদ্যালয়') ?></h2>
+                <h3 class="text-2xl lg:text-4xl font-bold opacity-80 uppercase tracking-tight"><?= esc($settings['school_name'] ?? 'Prottasha Academic High School') ?></h3>
             </div>
             <p class="text-lg lg:text-2xl font-medium opacity-90 border-l-4 border-emerald-400 pl-8 max-w-2xl italic leading-relaxed">
-                "Nurturing moral values and academic brilliance for a brighter Bangladesh."
+                "<?= esc($settings['homepage_hero'] ?: 'Nurturing moral values and academic brilliance for a brighter Bangladesh.') ?>"
             </p>
             <div class="flex flex-wrap gap-4 pt-8">
                 <a href="<?= base_url('notices') ?>" class="bg-primary-dark border border-emerald-600 text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-emerald-400 hover:text-primary transition-all duration-300 shadow-2xl active:scale-95">Latest Notices</a>
@@ -41,30 +41,28 @@
             </div>
             
             <div class="space-y-6">
+                <?php if (empty($recentNotices)): ?>
+                    <p class="text-gray-400 italic">No recent notices available.</p>
+                <?php else: foreach ($recentNotices as $notice): 
+                    $date = strtotime($notice['publish_date']);
+                ?>
                 <!-- Notice Item -->
-                <div class="group flex items-center gap-8 p-6 bg-surface rounded-2xl border border-transparent hover:border-emerald-100 hover:shadow-xl transition-all cursor-pointer">
-                    <div class="flex flex-col items-center justify-center min-w-[80px] h-[80px] bg-white rounded-xl shadow-sm border border-gray-100 group-hover:bg-primary group-hover:text-white transition-colors">
-                        <span class="text-[10px] uppercase font-black opacity-60 group-hover:opacity-80">MAY</span>
-                        <span class="text-3xl font-black">24</span>
+                <a href="<?= base_url('notice-details?id='.$notice['id']) ?>" class="group flex items-center gap-8 p-6 bg-surface rounded-2xl border border-transparent hover:border-emerald-100 hover:shadow-xl transition-all cursor-pointer no-underline block">
+                    <div class="flex flex-col items-center justify-center min-w-[80px] h-[80px] bg-white rounded-xl shadow-sm border border-gray-100 group-hover:bg-primary group-hover:text-white transition-colors text-gray-900">
+                        <span class="text-[10px] uppercase font-black opacity-60 group-hover:opacity-80"><?= date('M', $date) ?></span>
+                        <span class="text-3xl font-black"><?= date('d', $date) ?></span>
                     </div>
                     <div class="flex-1">
-                        <h4 class="text-xl font-black text-gray-900 group-hover:text-primary transition-colors">Internal Semester Final Exam Routine 2024 (Class 6-10)</h4>
-                        <p class="text-sm text-gray-500 font-medium mt-1 italic">Published by Academic Council on Jun 1, 2024</p>
+                        <h4 class="text-xl font-black text-gray-900 group-hover:text-primary transition-colors"><?= esc($notice['title']) ?></h4>
+                        <p class="text-sm text-gray-500 font-medium mt-1 italic">Published on <?= date('M j, Y', $date) ?></p>
                     </div>
-                    <span class="material-symbols-outlined text-gray-300 group-hover:text-emerald-500 transition-colors">description</span>
-                </div>
-                <!-- Notice Item 2 -->
-                <div class="group flex items-center gap-8 p-6 bg-surface rounded-2xl border border-transparent hover:border-emerald-100 hover:shadow-xl transition-all cursor-pointer">
-                    <div class="flex flex-col items-center justify-center min-w-[80px] h-[80px] bg-white rounded-xl shadow-sm border border-gray-100 group-hover:bg-accent group-hover:text-white transition-colors">
-                        <span class="text-[10px] uppercase font-black opacity-60 group-hover:opacity-80">MAY</span>
-                        <span class="text-3xl font-black">18</span>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="text-xl font-black text-gray-900 group-hover:text-accent transition-colors">Admission Circular for Vocational & Higher Secondary 2024-25</h4>
-                        <p class="text-sm text-gray-500 font-medium mt-1 italic">Published by Admissions Office on May 20, 2024</p>
-                    </div>
-                    <span class="material-symbols-outlined text-gray-300 group-hover:text-accent transition-colors">open_in_new</span>
-                </div>
+                    <?php if ($notice['attachment']): ?>
+                        <span class="material-symbols-outlined text-red-400 group-hover:text-emerald-500 transition-colors">picture_as_pdf</span>
+                    <?php else: ?>
+                        <span class="material-symbols-outlined text-gray-300 group-hover:text-emerald-500 transition-colors">description</span>
+                    <?php endif; ?>
+                </a>
+                <?php endforeach; endif; ?>
             </div>
         </div>
 
@@ -106,18 +104,16 @@
                 <h4 class="text-2xl font-bold text-gray-500 italic uppercase">Dedicated to Character & Excellence</h4>
             </div>
             <div class="text-gray-600 text-lg leading-relaxed font-medium space-y-4">
-                <p>Welcome to Prottasha Academic High School. Our institution is not just a building; it is a vision to shape the future of our nation through disciplined education and moral grounding.</p>
-                <p>At Prottasha, we treat every student as a unique talent. Our mission is to provide an environment where curiosity thrives and leadership is born. Join us in this journey.</p>
+                <?= nl2br(esc($settings['principal_message_snippet'] ?: 'Welcome to Prottasha Academic High School. Our institution is not just a building; it is a vision to shape the future of our nation through disciplined education and moral grounding.')) ?>
             </div>
             <div class="pt-6">
                 <p class="text-2xl font-black text-primary">Md. Abdur Rahman</p>
-                <p class="text-xs uppercase font-black tracking-widest text-gray-400">Principal, Prottasha Academic High School</p>
+                <p class="text-xs uppercase font-black tracking-widest text-gray-400">Principal, <?= esc($settings['school_name'] ?? 'Prottasha Academic High School') ?></p>
                 <a href="<?= base_url('about') ?>" class="inline-block mt-8 text-primary font-black text-xs uppercase tracking-widest border-2 border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all">Read Full Letter</a>
             </div>
         </div>
     </div>
 </section>
-
 <!-- 4. Quick Link Grid -->
 <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-8">

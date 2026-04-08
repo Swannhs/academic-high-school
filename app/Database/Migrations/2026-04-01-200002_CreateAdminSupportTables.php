@@ -8,6 +8,41 @@ class CreateAdminSupportTables extends Migration
 {
     public function up(): void
     {
+        // roles
+        $this->forge->addField([
+            'id'          => ['type' => 'INTEGER', 'auto_increment' => true],
+            'name'        => ['type' => 'VARCHAR', 'constraint' => 50],
+            'description' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'created_at'  => ['type' => 'DATETIME', 'null' => true],
+            'updated_at'  => ['type' => 'DATETIME', 'null' => true],
+        ]);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('roles', true);
+
+        // users
+        $this->forge->addField([
+            'id'            => ['type' => 'INTEGER', 'auto_increment' => true],
+            'role_id'       => ['type' => 'INTEGER'],
+            'name'          => ['type' => 'VARCHAR', 'constraint' => 120],
+            'username'      => ['type' => 'VARCHAR', 'constraint' => 60, 'unique' => true],
+            'email'         => ['type' => 'VARCHAR', 'constraint' => 120, 'unique' => true],
+            'password_hash' => ['type' => 'VARCHAR', 'constraint' => 255],
+            'status'        => ['type' => 'VARCHAR', 'constraint' => 20, 'default' => 'active'],
+            'last_login'    => ['type' => 'DATETIME', 'null' => true],
+            'created_at'    => ['type' => 'DATETIME', 'null' => true],
+            'updated_at'    => ['type' => 'DATETIME', 'null' => true],
+        ]);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('users', true);
+
+        // roles_permissions (pivot)
+        $this->forge->addField([
+            'role_id'       => ['type' => 'INTEGER'],
+            'permission_key'=> ['type' => 'VARCHAR', 'constraint' => 100],
+        ]);
+        $this->forge->addKey(['role_id', 'permission_key'], true);
+        $this->forge->createTable('role_permissions', true);
+
         // notice_categories
         $this->forge->addField([
             'id'         => ['type' => 'INTEGER', 'auto_increment' => true],
@@ -110,9 +145,9 @@ class CreateAdminSupportTables extends Migration
         // academic_calendar (events)
         $this->forge->addField([
             'id'          => ['type' => 'INTEGER', 'auto_increment' => true],
-            'event_title' => ['type' => 'VARCHAR', 'constraint' => 200],
+            'title'       => ['type' => 'VARCHAR', 'constraint' => 200],
             'category'    => ['type' => 'VARCHAR', 'constraint' => 100, 'default' => 'Holiday'],
-            'start_date'  => ['type' => 'DATE'],
+            'event_date'  => ['type' => 'DATE'],
             'end_date'    => ['type' => 'DATE', 'null' => true],
             'description' => ['type' => 'TEXT', 'null' => true],
             'status'      => ['type' => 'VARCHAR', 'constraint' => 20, 'default' => 'active'],
@@ -268,7 +303,7 @@ class CreateAdminSupportTables extends Migration
 
     public function down(): void
     {
-        foreach (['notice_categories', 'notices', 'teachers', 'results', 'routines', 'academic_calendar', 'downloads',
+        foreach (['roles', 'users', 'role_permissions', 'notice_categories', 'notices', 'teachers', 'results', 'routines', 'academic_calendar', 'downloads',
                   'pages', 'staff', 'gallery_images', 'gallery_albums',
                   'contact_messages', 'feedback', 'settings', 'admission_info'] as $table) {
             $this->forge->dropTable($table, true);

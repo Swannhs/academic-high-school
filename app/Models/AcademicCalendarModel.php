@@ -11,9 +11,9 @@ class AcademicCalendarModel extends Model
     protected $returnType = 'array';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'event_title',
+        'title',
         'category',
-        'start_date',
+        'event_date',
         'end_date',
         'description',
         'status',

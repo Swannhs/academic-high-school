@@ -31,21 +31,21 @@ class SettingsController extends AdminBaseController
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $textFields = [
-            'school_name','tagline','email','phone','address',
+            'school_name','school_name_bn','eiin','tagline','email','phone','address',
             'facebook_url','twitter_url','youtube_url',
             'map_embed','office_hours','homepage_hero','principal_message_snippet',
         ];
         foreach ($textFields as $field) {
             if (($val = $this->request->getPost($field)) !== null) {
-                $this->model->set($field, $val);
+                $this->model->updateSetting($field, $val);
             }
         }
         // Logo upload
         if ($logo = $this->uploadFile('logo', 'settings', $this->settings['logo'] ?? null, ['jpg', 'jpeg', 'png', 'webp'])) {
-            $this->model->set('logo', $logo);
+            $this->model->updateSetting('logo', $logo);
         }
         if ($fav = $this->uploadFile('favicon', 'settings', $this->settings['favicon'] ?? null, ['png', 'ico'])) {
-            $this->model->set('favicon', $fav);
+            $this->model->updateSetting('favicon', $fav);
         }
         return redirect()->to(base_url('admin/settings'))->with('success', 'Settings saved successfully.');
     }

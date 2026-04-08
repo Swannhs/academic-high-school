@@ -57,11 +57,11 @@
         <div class="flex items-center gap-6">
             <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-sm">call</span>
-                <span>+880 1234 567890</span>
+                <span><?= esc($settings['phone'] ?? '+880 1234 567890') ?></span>
             </div>
             <div class="hidden sm:flex items-center gap-2">
                 <span class="material-symbols-outlined text-sm">mail</span>
-                <span>info@prottasha.edu.bd</span>
+                <span><?= esc($settings['email'] ?? 'info@prottasha.edu.bd') ?></span>
             </div>
         </div>
         <div class="flex items-center gap-4">
@@ -74,13 +74,17 @@
     <!-- Main Branding Header -->
     <header class="bg-white px-4 py-6 border-b flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="flex items-center gap-4">
-            <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white shrink-0">
-                <span class="material-symbols-outlined text-4xl">school</span>
+            <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 overflow-hidden">
+                <?php if (!empty($settings['logo'])): ?>
+                    <img src="<?= base_url('uploads/settings/' . $settings['logo']) ?>" class="w-full h-full object-contain p-2" alt="Logo">
+                <?php else: ?>
+                    <span class="material-symbols-outlined text-4xl">school</span>
+                <?php endif; ?>
             </div>
             <div>
-                <h1 class="text-2xl font-black text-primary leading-none mb-1">প্রত্যাশা একাডেমিক উচ্চ বিদ্যালয়</h1>
-                <h2 class="text-lg font-bold text-secondary uppercase tracking-tight">Prottasha Academic High School</h2>
-                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">EIIN: 123456 • Registered Institution</p>
+                <h1 class="text-2xl font-black text-primary leading-none mb-1"><?= esc($settings['school_name_bn'] ?? 'প্রত্যাশা একাডেমিক উচ্চ বিদ্যালয়') ?></h1>
+                <h2 class="text-lg font-bold text-secondary uppercase tracking-tight"><?= esc($settings['school_name'] ?? 'Prottasha Academic High School') ?></h2>
+                <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">EIIN: <?= esc($settings['eiin'] ?? '123456') ?> • Registered Institution</p>
             </div>
         </div>
         <div class="hidden lg:flex gap-8 text-right">

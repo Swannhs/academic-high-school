@@ -61,6 +61,7 @@ ini_set('display_errors', '1');
 if (! class_exists('Locale')) {
     class Locale {
         public static function getDefault() { return 'en'; }
+        public static function setDefault($locale) { return true; }
     }
 }
 

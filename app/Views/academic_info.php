@@ -1,29 +1,3 @@
-<?php
-// ── Helpers ──────────────────────────────────────────────────────────────────
-$monthName   = date('F', mktime(0, 0, 0, $cal_month, 1, $cal_year));
-$daysInMonth = (int) date('t', mktime(0, 0, 0, $cal_month, 1, $cal_year));
-$firstDow    = (int) date('w', mktime(0, 0, 0, $cal_month, 1, $cal_year)); // 0=Sun
-
-// Build lookup: day → events[]
-$eventsByDay = [];
-foreach ($cal_events as $ev) {
-    $d = (int) date('j', strtotime($ev['event_date']));
-    $eventsByDay[$d][] = $ev;
-}
-
-$prevMonth = $cal_month - 1; $prevYear = $cal_year;
-if ($prevMonth < 1) { $prevMonth = 12; $prevYear--; }
-$nextMonth = $cal_month + 1; $nextYear = $cal_year;
-if ($nextMonth > 12) { $nextMonth = 1; $nextYear++; }
-
-$categoryColors = [
-    'exam'    => ['bg' => 'bg-primary', 'dot' => 'bg-primary', 'badge' => 'bg-emerald-50 text-primary border-emerald-200', 'icon' => 'assignment_turned_in'],
-    'holiday' => ['bg' => 'bg-red-500', 'dot' => 'bg-red-400', 'badge' => 'bg-red-50 text-red-600 border-red-200',          'icon' => 'beach_access'],
-    'event'   => ['bg' => 'bg-amber-500','dot'=> 'bg-amber-400','badge'=> 'bg-amber-50 text-amber-700 border-amber-200',     'icon' => 'celebration'],
-    'general' => ['bg' => 'bg-slate-600','dot'=> 'bg-slate-400','badge'=> 'bg-slate-50 text-slate-600 border-slate-200',     'icon' => 'info'],
-];
-?>
-
 <!-- Hero Banner -->
 <section class="relative h-[360px] flex items-center overflow-hidden bg-primary">
     <div class="absolute inset-0 z-0">
@@ -158,135 +132,7 @@ $categoryColors = [
     </div>
 </div>
 
-<!-- Academic Calendar (Live) -->
-<section class="py-28 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-
-            <!-- Upcoming Events List -->
-            <div>
-                <span class="text-primary font-black text-[10px] tracking-[0.3em] uppercase bg-emerald-50 px-4 py-1.5 rounded-full border border-emerald-100">Live Calendar</span>
-                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-6 mb-4 tracking-tighter">Academic Calendar<br><span class="text-primary"><?= date('Y') ?></span></h2>
-                <p class="text-slate-500 text-lg font-medium leading-relaxed mb-12">
-                    Stay informed about upcoming assessments, vacations, and institutional milestones.
-                </p>
-
-                <!-- Legend -->
-                <div class="flex flex-wrap gap-3 mb-10">
-                    <?php foreach (['exam' => 'Examination', 'holiday' => 'Holiday', 'event' => 'Event', 'general' => 'General'] as $k => $label): ?>
-                    <span class="flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold <?= $categoryColors[$k]['badge'] ?>">
-                        <span class="w-2 h-2 rounded-full <?= $categoryColors[$k]['dot'] ?>"></span>
-                        <?= $label ?>
-                    </span>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="space-y-5 mb-12">
-                    <?php if (empty($upcoming)): ?>
-                    <p class="text-slate-400 italic">No upcoming events scheduled.</p>
-                    <?php else: ?>
-                    <?php foreach ($upcoming as $ev):
-                        $cat  = $categoryColors[$ev['category']] ?? $categoryColors['general'];
-                        $dt   = strtotime($ev['event_date']);
-                    ?>
-                    <div class="flex gap-5 items-center group">
-                        <div class="bg-white border border-slate-100 rounded-2xl px-4 py-3 text-center min-w-[72px] shadow-sm group-hover:border-primary/30 transition-all">
-                            <span class="block text-[10px] font-black text-primary uppercase tracking-widest"><?= date('M', $dt) ?></span>
-                            <span class="block text-3xl font-black text-slate-800"><?= date('j', $dt) ?></span>
-                        </div>
-                        <div class="flex-1">
-                            <span class="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border <?= $cat['badge'] ?> mb-1">
-                                <span class="material-symbols-outlined text-xs"><?= $cat['icon'] ?></span>
-                                <?= ucfirst($ev['category']) ?>
-                            </span>
-                            <h5 class="font-black text-slate-800 group-hover:text-primary transition-colors"><?= esc($ev['title']) ?></h5>
-                            <p class="text-slate-500 text-sm font-medium"><?= esc($ev['description']) ?></p>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-
-                <a href="<?= base_url('downloads') ?>"
-                   class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20">
-                    <span class="material-symbols-outlined">calendar_today</span>
-                    Download Full Calendar (PDF)
-                </a>
-            </div>
-
-            <!-- Interactive Calendar Widget -->
-            <div class="bg-white rounded-[40px] shadow-2xl border border-slate-100 p-8 sticky top-8">
-                <!-- Month Nav -->
-                <div class="flex justify-between items-center mb-8">
-                    <h4 class="text-2xl font-black text-slate-800"><?= $monthName ?> <?= $cal_year ?></h4>
-                    <div class="flex gap-2">
-                        <a href="?year=<?= $prevYear ?>&month=<?= $prevMonth ?>"
-                           class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 flex items-center justify-center transition-colors">
-                            <span class="material-symbols-outlined text-slate-500">chevron_left</span>
-                        </a>
-                        <a href="?year=<?= $nextYear ?>&month=<?= $nextMonth ?>"
-                           class="w-10 h-10 rounded-xl bg-slate-50 hover:bg-slate-100 flex items-center justify-center transition-colors">
-                            <span class="material-symbols-outlined text-slate-500">chevron_right</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Day headers -->
-                <div class="grid grid-cols-7 gap-1 text-center mb-1">
-                    <?php foreach (['Su','Mo','Tu','We','Th','Fr','Sa'] as $i => $d): ?>
-                    <div class="text-[10px] font-black pb-3 <?= $i === 5 ? 'text-red-400' : 'text-slate-400' ?> uppercase"><?= $d ?></div>
-                    <?php endforeach; ?>
-                </div>
-
-                <!-- Empty leading cells -->
-                <div class="grid grid-cols-7 gap-1 text-center">
-                    <?php for ($i = 0; $i < $firstDow; $i++): ?>
-                    <div class="h-10"></div>
-                    <?php endfor; ?>
-
-                    <?php for ($day = 1; $day <= $daysInMonth; $day++):
-                        $dow     = ($firstDow + $day - 1) % 7;
-                        $isFri   = ($dow === 5);
-                        $today   = ($day === (int) date('j') && $cal_month === (int) date('n') && $cal_year === (int) date('Y'));
-                        $hasEvts = isset($eventsByDay[$day]);
-                        $evtCat  = $hasEvts ? ($eventsByDay[$day][0]['category'] ?? 'general') : null;
-                        $dotCol  = $evtCat ? $categoryColors[$evtCat]['dot'] : '';
-
-                        $baseCls = 'h-10 rounded-xl flex flex-col items-center justify-center text-xs font-bold relative transition-all cursor-default ';
-                        if ($today)   $baseCls .= 'bg-primary text-white shadow-lg shadow-primary/30';
-                        elseif ($isFri) $baseCls .= 'text-red-400 hover:bg-red-50';
-                        else          $baseCls .= 'text-slate-600 hover:bg-slate-50';
-                        if ($hasEvts && !$today) $baseCls .= ' ring-1 ring-inset ring-slate-200';
-                    ?>
-                    <div class="<?= $baseCls ?>" <?= $hasEvts ? 'title="'.esc(implode(', ', array_column($eventsByDay[$day], 'title'))).'"' : '' ?>>
-                        <?= $day ?>
-                        <?php if ($hasEvts): ?>
-                        <span class="absolute bottom-1.5 w-1 h-1 rounded-full <?= $dotCol ?>"></span>
-                        <?php endif; ?>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-
-                <!-- Events this month -->
-                <?php if (!empty($cal_events)): ?>
-                <div class="mt-6 pt-6 border-t border-slate-50 space-y-3">
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Events this month</p>
-                    <?php foreach ($cal_events as $ev):
-                        $cat = $categoryColors[$ev['category']] ?? $categoryColors['general'];
-                    ?>
-                    <div class="flex items-center gap-3">
-                        <span class="w-2 h-2 rounded-full shrink-0 <?= $cat['dot'] ?>"></span>
-                        <span class="text-[11px] font-bold text-slate-600"><?= date('d', strtotime($ev['event_date'])) ?> — <?= esc($ev['title']) ?></span>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-                <?php else: ?>
-                <p class="mt-6 pt-6 border-t border-slate-50 text-[11px] text-slate-400 italic">No events this month.</p>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</section>
+<?= view('partials/academic_calendar_section', get_defined_vars()) ?>
 
 <!-- Academic Streams -->
 <section class="py-28 bg-white">
@@ -395,5 +241,166 @@ $categoryColors = [
     }
     document.getElementById('class-modal').addEventListener('click', function(e) {
         if (e.target === this) closeClassModal();
+    });
+
+    function formatCalendarDate(dateString) {
+        return new Date(dateString + 'T00:00:00').toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    }
+
+    function bindAcademicCalendar(root = document) {
+        const calendarRoot = root.querySelector('[data-calendar-root]');
+        if (!calendarRoot) {
+            return;
+        }
+
+        const renderDayDetails = (dayButton) => {
+            const panel = calendarRoot.querySelector('[data-calendar-day-panel]');
+            if (!panel || !dayButton) {
+                return;
+            }
+
+            calendarRoot.querySelectorAll('[data-calendar-day]').forEach((button) => {
+                button.classList.remove('bg-emerald-50', 'text-primary', 'ring-emerald-200');
+            });
+
+            if (!dayButton.classList.contains('bg-primary')) {
+                dayButton.classList.add('bg-emerald-50', 'text-primary', 'ring-emerald-200');
+            }
+
+            const events = JSON.parse(dayButton.dataset.events || '[]');
+            const selectedDate = formatCalendarDate(`${calendarRoot.dataset.currentYear}-${String(calendarRoot.dataset.currentMonth).padStart(2, '0')}-${String(dayButton.dataset.calendarDay).padStart(2, '0')}`);
+
+            if (!events.length) {
+                panel.innerHTML = `
+                    <div class="flex items-center justify-between gap-4 mb-5">
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-2">Selected Date</p>
+                            <h3 class="text-2xl font-black text-slate-900">${selectedDate}</h3>
+                        </div>
+                        <span class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">No Events</span>
+                    </div>
+                    <p class="text-slate-400 italic">Nothing is scheduled for this day.</p>
+                `;
+                return;
+            }
+
+            panel.innerHTML = `
+                <div class="flex items-center justify-between gap-4 mb-5">
+                    <div>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-2">Selected Date</p>
+                        <h3 class="text-2xl font-black text-slate-900">${selectedDate}</h3>
+                    </div>
+                    <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary">${events.length} Event${events.length > 1 ? 's' : ''}</span>
+                </div>
+                <div class="space-y-3">
+                    ${events.map((event) => `
+                        <article class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border ${event.badge}">
+                                    <span class="material-symbols-outlined text-xs">${event.icon}</span>
+                                    ${event.category}
+                                </span>
+                            </div>
+                            <h4 class="font-black text-slate-800">${event.title}</h4>
+                            ${event.description ? `<p class="mt-2 text-sm text-slate-500 font-medium leading-relaxed">${event.description}</p>` : ''}
+                        </article>
+                    `).join('')}
+                </div>
+            `;
+        };
+
+        const fetchCalendar = async (year, month) => {
+            const requestUrl = new URL(window.location.href);
+            requestUrl.searchParams.set('year', year);
+            requestUrl.searchParams.set('month', month);
+            requestUrl.searchParams.set('fragment', 'calendar');
+
+            calendarRoot.classList.add('opacity-60', 'pointer-events-none');
+
+            try {
+                const response = await fetch(requestUrl.toString(), {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Calendar request failed');
+                }
+
+                const payload = await response.json();
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = payload.html;
+                const replacement = wrapper.firstElementChild;
+                calendarRoot.replaceWith(replacement);
+
+                const browserUrl = new URL(window.location.href);
+                browserUrl.searchParams.set('year', payload.year);
+                browserUrl.searchParams.set('month', payload.month);
+                window.history.pushState({ year: payload.year, month: payload.month }, '', browserUrl.toString());
+
+                bindAcademicCalendar(document);
+            } catch (error) {
+                window.location.href = `${window.location.pathname}?year=${year}&month=${month}`;
+            } finally {
+                calendarRoot.classList.remove('opacity-60', 'pointer-events-none');
+            }
+        };
+
+        calendarRoot.querySelectorAll('[data-calendar-nav]').forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                fetchCalendar(link.dataset.year, link.dataset.month);
+            });
+        });
+
+        const form = calendarRoot.querySelector('[data-calendar-form]');
+        form?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            fetchCalendar(formData.get('year'), formData.get('month'));
+        });
+
+        calendarRoot.querySelector('[data-calendar-today]')?.addEventListener('click', () => {
+            const today = new Date();
+            fetchCalendar(today.getFullYear(), today.getMonth() + 1);
+        });
+
+        calendarRoot.querySelectorAll('[data-calendar-day]').forEach((button) => {
+            button.addEventListener('click', () => renderDayDetails(button));
+        });
+
+        calendarRoot.querySelectorAll('[data-calendar-day-jump]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const targetDay = calendarRoot.querySelector(`[data-calendar-day="${button.dataset.calendarDayJump}"]`);
+                if (targetDay) {
+                    targetDay.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                    renderDayDetails(targetDay);
+                }
+            });
+        });
+    }
+
+    bindAcademicCalendar(document);
+
+    window.addEventListener('popstate', () => {
+        const params = new URLSearchParams(window.location.search);
+        const year = params.get('year') || new Date().getFullYear();
+        const month = params.get('month') || (new Date().getMonth() + 1);
+        const calendarRoot = document.querySelector('[data-calendar-root]');
+        if (calendarRoot) {
+            const event = new Event('submit', { cancelable: true });
+            const form = calendarRoot.querySelector('[data-calendar-form]');
+            if (form) {
+                form.querySelector('[name="year"]').value = year;
+                form.querySelector('[name="month"]').value = month;
+                form.dispatchEvent(event);
+            }
+        }
     });
 </script>

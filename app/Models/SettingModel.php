@@ -20,7 +20,7 @@ class SettingModel extends Model
         return $result;
     }
 
-    public function set(string $key, ?string $value): void
+    public function updateSetting(string $key, ?string $value): void
     {
         $existing = $this->where('key', $key)->first();
         if ($existing) {

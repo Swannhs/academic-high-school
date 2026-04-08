@@ -25,6 +25,24 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
 /*
  *---------------------------------------------------------------
+ * SHIM FOR MISSING INTL EXTENSION
+ *---------------------------------------------------------------
+ */
+if (! class_exists('Locale') || ! method_exists('Locale', 'setDefault')) {
+    if (! class_exists('Locale')) {
+        class Locale {
+            public static function getDefault() { return 'en'; }
+            public static function setDefault($locale) { return true; }
+        }
+    } else {
+        // If it exists but lacks setDefault, we can't easily redefine it in PHP
+        // but we can try to use a different approach or just pray.
+        // Actually, most polyfills should have it. 
+    }
+}
+
+/*
+ *---------------------------------------------------------------
  * SET THE CURRENT DIRECTORY
  *---------------------------------------------------------------
  */
