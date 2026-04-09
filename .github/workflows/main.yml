@@ -1,0 +1,49 @@
+name: Prottasha Portal CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Run Automated Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: intl, gd, zip, mysqli, pdo_mysql, sqlite3
+          coverage: none
+
+      - name: Install Dependencies
+        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Prepare Environment
+        run: cp env .env
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --no-configuration --do-not-cache-result --colors=always tests
+
+  deploy:
+    name: Deploy to AWS
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /var/www/html/Academic
+            git pull origin main
+            docker-compose up -d --build
+            docker exec academic-app-1 php spark migrate
+            docker exec academic-app-1 php spark db:seed DummyDataSeeder
