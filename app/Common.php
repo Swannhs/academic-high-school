@@ -13,25 +13,31 @@
  *
  * @see: https://codeigniter.com/user_guide/extending/common.html
  */
-if (! function_exists('upload_url')) {
+if (! function_exists('safe_upload_url')) {
     /**
-     * Get the full URL to an uploaded file.
-     *
-     * @param string $folder   The subfolder in public/uploads/
-     * @param string|null $filename The filename
-     * @return string|null
+     * Get the full URL to an uploaded file with smart fallback for missing files.
      */
-    function upload_url(string $folder, ?string $filename): ?string
+    function safe_upload_url(string $folder, ?string $filename, ?string $fallback = 'https://images.unsplash.com/photo-1523050335109-7efbbe195018?q=80&w=800'): string
     {
         if (empty($filename)) {
-            return null;
+            return $fallback;
         }
 
         // Check if it's already a full URL
-        if (filter_var($filename, FILTER_VALIDATE_URL)) {
+        if (filter_var($filename, FILTER_VALIDATE_URL) || str_starts_with($filename, 'http')) {
             return $filename;
         }
 
-        return base_url('uploads/' . $folder . '/' . $filename);
+        // Detect if file exists on disk
+        $localPath = FCPATH . 'uploads/' . trim($folder, '/') . '/' . ltrim($filename, '/');
+        if (!is_file($localPath)) {
+            // Human portrait fallback for teachers/staff
+            if ($folder === 'teachers' || $folder === 'profiles' || $folder === 'staff') {
+                return 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800';
+            }
+            return $fallback;
+        }
+
+        return base_url('uploads/' . trim($folder, '/') . '/' . ltrim($filename, '/'));
     }
 }

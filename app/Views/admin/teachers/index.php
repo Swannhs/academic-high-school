@@ -64,7 +64,7 @@
                     <td class="ps-4 py-3">
                         <div class="avatar-container">
                             <?php if (!empty($t['photo'])): ?>
-                                <img src="<?= base_url('uploads/teachers/' . $t['photo']) ?>" class="rounded shadow-sm object-fit-cover" width="56" height="56" alt="<?= esc($t['name']) ?>">
+                                <img src="<?= safe_upload_url('teachers', $t['photo']) ?>" class="rounded shadow-sm object-fit-cover" width="56" height="56" alt="<?= esc($t['name']) ?>">
                             <?php else: ?>
                                 <div class="bg-primary bg-opacity-10 text-primary rounded d-flex align-items-center justify-content-center fw-bold" style="width: 56px; height: 56px">
                                     <?= substr($t['name'], 0, 1) ?>

@@ -95,7 +95,7 @@
                     <input type="file" name="photo" class="form-control" accept=".jpg,.jpeg,.png,.webp">
                     <?php if ($isEdit && (! empty($teacher['photo_url']) || ! empty($teacher['photo']))): ?>
                     <div class="mt-2 text-center p-2 border rounded" style="width: fit-content;">
-                        <img src="<?= esc(upload_url('teachers', $teacher['photo_url'] ?? $teacher['photo'])) ?>" style="width:80px;height:80px;object-fit:cover;border-radius:8px;">
+                        <img src="<?= esc(safe_upload_url('teachers', $teacher['photo_url'] ?? $teacher['photo'])) ?>" style="width:80px;height:80px;object-fit:cover;border-radius:8px;">
                         <div class="mt-1 small text-muted">Current</div>
                     </div>
                     <?php endif; ?>

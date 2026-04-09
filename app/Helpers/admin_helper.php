@@ -7,20 +7,8 @@ if (! function_exists('admin_has_permission')) {
     }
 }
 
-if (! function_exists('upload_url')) {
-    function upload_url(string $folder, ?string $filename): ?string
-    {
-        if (empty($filename)) {
-            return null;
-        }
+// upload_url logic moved to app/Common.php for global availability and priority
 
-        if (str_starts_with($filename, 'http://') || str_starts_with($filename, 'https://')) {
-            return $filename;
-        }
-
-        return base_url('uploads/' . trim($folder, '/') . '/' . ltrim($filename, '/'));
-    }
-}
 
 if (! function_exists('status_badge_class')) {
     function status_badge_class(?string $status): string

@@ -85,7 +85,7 @@
                 <label class="form-label">Result File (PDF Only) <span class="text-danger">*</span></label>
                 <input type="file" name="file_path" class="form-control" <?= $isEdit ? '' : 'required' ?> accept=".pdf">
                 <?php if ($isEdit && ! empty($result['file_path'])): ?>
-                <div class="mt-2"><a href="<?= upload_url('results', $result['file_path']) ?>" target="_blank" class="btn btn-sm btn-light border"><i class="bi bi-file-earmark-pdf me-1"></i>View Current File</a></div>
+                <div class="mt-2"><a href="<?= safe_upload_url('results', $result['file_path']) ?>" target="_blank" class="btn btn-sm btn-light border"><i class="bi bi-file-earmark-pdf me-1"></i>View Current File</a></div>
                 <?php endif; ?>
             </div>
             <div class="row mb-4">

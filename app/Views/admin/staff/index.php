@@ -9,7 +9,7 @@
             <tbody>
             <?php foreach ($staff as $m): ?>
             <tr>
-                <td><img src="<?= $m['photo'] ? base_url('uploads/staff/'.$m['photo']) : base_url('assets/img/avatar-placeholder.png') ?>" class="table-avatar"></td>
+                <td><img src="<?= safe_upload_url('staff', $m['photo'] ?? null) ?>" class="table-avatar"></td>
                 <td><div class="fw-500"><?= esc($m['name']) ?></div></td>
                 <td class="small"><?= esc($m['role']) ?></td>
                 <td><span class="badge bg-<?= $m['status'] === 'active' ? 'success' : 'secondary' ?>"><?= esc($m['status']) ?></span></td>

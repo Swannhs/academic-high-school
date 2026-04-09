@@ -189,7 +189,7 @@ $s = $settings; // shorthand
                         <input type="file" name="logo" class="form-control mb-2" accept=".jpg,.jpeg,.png,.webp">
                         <?php if (!empty($s['logo'])): ?>
                             <div class="text-center p-2 border rounded bg-light">
-                                <img src="<?= base_url('uploads/settings/' . $s['logo']) ?>" class="img-fluid" style="max-height:80px;" alt="Logo">
+                                <img src="<?= safe_upload_url('settings', $s['logo'] ?? null) ?>" class="img-fluid" style="max-height:80px;" alt="Logo">
                                 <div class="small text-muted mt-1">Current logo</div>
                             </div>
                         <?php else: ?>

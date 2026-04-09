@@ -77,7 +77,7 @@
         <div class="flex items-center gap-4">
             <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 overflow-hidden">
                 <?php if (!empty($settings['logo'])): ?>
-                    <img src="<?= base_url('uploads/settings/' . $settings['logo']) ?>" class="w-full h-full object-contain p-2" alt="Logo">
+                    <img src="<?= safe_safe_upload_url('settings', $settings['logo'] ?? null, 'https://dummyimage.com/150x50/065f46/ffffff.png&text=LOGO') ?>" class="w-full h-full object-contain p-2" alt="Logo">
                 <?php else: ?>
                     <span class="material-symbols-outlined text-4xl">school</span>
                 <?php endif; ?>

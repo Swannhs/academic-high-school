@@ -130,7 +130,7 @@
         <div class="dropdown">
             <button class="btn btn-sm btn-light dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown">
                 <?php if (! empty($adminUser['avatar'])): ?>
-                    <img src="<?= upload_url('profiles', $adminUser['avatar']) ?>" class="table-avatar" alt="">
+                    <img src="<?= safe_upload_url('profiles', $adminUser['avatar']) ?>" class="table-avatar" alt="">
                 <?php else: ?>
                     <span class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;font-size:.75rem;font-weight:700;">
                         <?= strtoupper(substr($adminUser['name'] ?? 'A', 0, 1)) ?>

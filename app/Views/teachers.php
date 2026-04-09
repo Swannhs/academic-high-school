@@ -3,7 +3,7 @@
     <!-- Animated Gradient Background -->
     <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-primary/30 opacity-90 mix-blend-multiply"></div>
-        <img class="w-full h-full object-cover opacity-30 grayscale" src="https://images.unsplash.com/photo-1577891721396-22c4b8565d93?q=80&w=2000" alt="Our Educators">
+        <img class="w-full h-full object-cover opacity-30 grayscale" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=2000" alt="Our Educators">
         
         <!-- Decorative Overlays -->
         <div class="absolute top-0 right-0 w-[500px] h-full bg-gradient-to-l from-primary/20 to-transparent"></div>
@@ -66,7 +66,7 @@
             <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] -mr-16 -mt-16 group-hover:scale-150 group-hover:bg-primary/10 transition-transform duration-700"></div>
             
             <div class="w-40 h-40 rounded-[48px] overflow-hidden mb-8 ring-8 ring-slate-50 group-hover:ring-emerald-50 transition-all duration-500 shadow-inner">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="<?= esc(upload_url('teachers', $t['photo_url'] ?? $t['photo'] ?? null) ?? '') ?>" alt="<?= esc($t['name']) ?>">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="<?= safe_safe_upload_url('teachers', $t['photo'] ?? null) ?>" alt="<?= esc($t['name']) ?>">
             </div>
             
             <div class="mb-6 relative z-10">

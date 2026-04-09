@@ -56,18 +56,15 @@
             </div>
         <?php else: ?>
             <?php foreach ($images as $img): 
-                $title = $img['caption'] ?: $img['album_title'];
-                $title_bn = ($img['caption'] === $img['caption_bn']) ? $img['album_title_bn'] : $img['caption_bn']; // Simple fallback logic for captions
+                // Use album title as fallback for image captions
+                $title = ($img['caption'] ?? null) ?: ($img['album_title'] ?? 'Gallery Image');
                 // Actually ld() expects an array with field and field_bn
                 $item = [
                     'title' => $title,
-                    'title_bn' => $img['caption_bn'] ?: $img['album_title_bn']
+                    'title_bn' => ($img['caption_bn'] ?? null) ?: ($img['album_title_bn'] ?? null) ?: $title
                 ];
                 
-                $url = $img['image_path'];
-                if (!filter_var($url, FILTER_VALIDATE_URL)) {
-                    $url = base_url('uploads/gallery/' . $url);
-                }
+                $url = safe_safe_upload_url('gallery', $img['image_path'] ?? null);
             ?>
                 <div class="gallery-item group relative aspect-square rounded-[40px] overflow-hidden bg-slate-900 shadow-2xl transition-all duration-700 hover:-translate-y-2" data-category="<?= esc($img['category']) ?>">
                     <img src="<?= esc($url) ?>" alt="<?= esc($title) ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-90 group-hover:opacity-100">

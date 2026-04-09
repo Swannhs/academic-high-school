@@ -36,7 +36,7 @@
             <!-- Cover image -->
             <div class="ratio ratio-16x9">
                 <?php if ($a['cover_image']): ?>
-                    <img src="<?= base_url('uploads/gallery/'.$a['cover_image']) ?>" class="card-img-top object-fit-cover" alt="<?= esc($a['title']) ?>">
+                    <img src="<?= safe_upload_url('gallery', $a['cover_image']) ?>" class="card-img-top object-fit-cover" alt="<?= esc($a['title']) ?>">
                 <?php else: ?>
                     <div class="bg-light d-flex align-items-center justify-content-center border-bottom">
                         <i class="bi bi-images text-muted opacity-25" style="font-size: 3rem"></i>

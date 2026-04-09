@@ -92,7 +92,7 @@
     <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-20">
         <div class="md:w-5/12 relative">
             <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                <img class="w-full h-full object-cover" data-alt="Portrait of South Asian academic professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwb0B-ArmzFBuLfoyvtQEeKwht9wKtJsjpkkhF3C-Lk3MUx5DSO7XoO3bCV4_qwdafpFa5W17-hC3udt_J6XJHEXfu40IySi_G5ZmQ4vz_NcG5ZNNfS1D6ItU44qQcO-MXGQthZTcoe5i1Z8-TTdtKGhrC9p6YJgWTYFYhz_k2jYX7dv4MaVo45TL7sKjQKD0CmIeO75tiDZ17C_6t9alEo2ncTSdjU3po0D-ZFdoacjH2h0jCHWMojswZ-9FJqGznzCbR6pIsjA"/>
+                <img class="w-full h-full object-cover" data-alt="Portrait of South Asian academic professional" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800"/>
             </div>
             <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-400/20 backdrop-blur-xl rounded-full border border-emerald-400/30 -z-10 animate-pulse"></div>
         </div>
@@ -174,7 +174,7 @@
             <?php if ($heroImg): ?>
             <div class="md:col-span-2 aspect-[16/9] rounded-3xl overflow-hidden border-4 border-white shadow-xl group">
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                     src="<?= esc($imgBase . $heroImg['image_path']) ?>"
+                     src="<?= safe_safe_upload_url('gallery', $heroImg['image_path'] ?? null) ?>"
                      alt="<?= esc(ld($heroImg, 'caption') ?: ld($heroImg, 'album_title')) ?>">
             </div>
             <?php else: ?>
@@ -186,7 +186,7 @@
                 <div class="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl group bg-slate-100">
                     <?php if ($thumbImg1): ?>
                     <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                         src="<?= esc($imgBase . $thumbImg1['image_path']) ?>"
+                         src="<?= safe_safe_upload_url('gallery', $thumbImg1['image_path'] ?? null) ?>"
                          alt="<?= esc(ld($thumbImg1, 'caption') ?: '') ?>">
                     <?php else: ?>
                     <div class="w-full h-full flex items-center justify-center"><span class="material-symbols-outlined text-4xl text-slate-300">image</span></div>
@@ -195,7 +195,7 @@
                 <div class="aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-xl group bg-slate-100">
                     <?php if ($thumbImg2): ?>
                     <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                         src="<?= esc($imgBase . $thumbImg2['image_path']) ?>"
+                         src="<?= safe_safe_upload_url('gallery', $thumbImg2['image_path'] ?? null) ?>"
                          alt="<?= esc(ld($thumbImg2, 'caption') ?: '') ?>">
                     <?php else: ?>
                     <div class="w-full h-full flex items-center justify-center"><span class="material-symbols-outlined text-4xl text-slate-300">image</span></div>

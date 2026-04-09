@@ -103,7 +103,7 @@
                            </span>
                         </td>
                         <td class="px-8 py-6 text-right">
-                            <a href="<?= esc(upload_url('results', $res['download_url'] ?? $res['file_path'] ?? null) ?? '#') ?>" target="_blank" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-accent transition-all shadow-md shadow-primary/20">
+                            <a href="<?= esc(safe_upload_url('results', $res['download_url'] ?? $res['file_path'] ?? null) ?? '#') ?>" target="_blank" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-accent transition-all shadow-md shadow-primary/20">
                                 <span>Download</span>
                                 <span class="material-symbols-outlined text-sm">download</span>
                             </a>
@@ -140,7 +140,7 @@
                     <span class="text-[9px] uppercase font-black text-gray-400 tracking-widest">Class Category</span>
                     <span class="text-xs font-bold text-secondary uppercase tracking-tight"><?= esc($int['class_category']) ?></span>
                 </div>
-                <a href="<?= esc(upload_url('results', $int['download_url'] ?? $int['file_path'] ?? null) ?? '#') ?>" target="_blank" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-accent transition-all shadow-lg active:scale-95">
+                <a href="<?= esc(safe_upload_url('results', $int['download_url'] ?? $int['file_path'] ?? null) ?? '#') ?>" target="_blank" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-accent transition-all shadow-lg active:scale-95">
                     View Results
                 </a>
             </div>
