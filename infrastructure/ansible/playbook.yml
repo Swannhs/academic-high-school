@@ -1,0 +1,47 @@
+---
+- name: Setup Academic Portal on AWS
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+          - git
+          - python3-pip
+        state: present
+
+    - name: Install Docker
+      shell: curl -sSL https://get.docker.com/ | sh
+
+    - name: Ensure Docker is started
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Docker Compose
+      get_url:
+        url: https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    - name: Clone Repository
+      git:
+        repo: 'https://github.com/{{ github_username }}/Academic.git'
+        dest: /var/www/html/Academic
+        clone: yes
+        update: yes
+
+    - name: Launch Application
+      shell:
+        cmd: docker-compose up -d --build
+        chdir: /var/www/html/Academic
