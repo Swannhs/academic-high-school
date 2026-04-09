@@ -13,6 +13,16 @@ $routes->get('admission',      'Home::admission');
 $routes->get('notices',        'Home::notices');
 $routes->get('notice-details', 'Home::notice_details');
 $routes->get('contact',        'Home::contact');
+$routes->get('debug-images', function() {
+    $folder = 'teachers'; $file = 'default_principal.jpg';
+    $path = FCPATH . 'uploads/' . $folder . '/' . $file;
+    echo "FCPATH: " . FCPATH . "<br>";
+    echo "Path: " . $path . "<br>";
+    echo "is_file: " . (is_file($path) ? 'TRUE' : 'FALSE') . "<br>";
+    echo "is_dir: " . (is_dir(FCPATH . 'uploads/') ? 'TRUE' : 'FALSE') . "<br>";
+    echo "Exists: " . (file_exists($path) ? 'TRUE' : 'FALSE') . "<br>";
+    echo "safe_upload_url result: " . safe_upload_url($folder, $file);
+});
 $routes->get('results',        'Home::results');
 $routes->get('routines',       'Home::routines');
 $routes->get('gallery',        'Home::gallery');
