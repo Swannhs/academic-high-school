@@ -84,6 +84,8 @@ return [
         'routines_sub' => 'Class schedules and exam routines for all sections, meticulously planned for optimal learning pacing.',
         'contact' => 'Get in Touch',
         'contact_sub' => '"Connecting our community with excellence. Reach out to our administrative office for any inquiries or support."',
+        'gallery' => 'Campus Life Archive',
+        'gallery_sub' => 'Capturing the vibrant moments, academic rigor, and communal spirit of Prottasha Academic.',
         'office_hours' => 'Office Hours',
         'sun_thu' => 'Sun - Thu: 9:00 AM - 4:00 PM',
         'fri_sat' => 'Friday & Saturday: Closed',
