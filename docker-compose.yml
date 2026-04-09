@@ -4,10 +4,10 @@ services:
     volumes:
       - .:/var/www/html
     ports:
-      - "8080:80"
+      - "80:80"
     environment:
       - APP_NAME=ProttashaAcademic
-      - CI_ENVIRONMENT=development
+      - CI_ENVIRONMENT=production
     networks:
       - app-network
 
