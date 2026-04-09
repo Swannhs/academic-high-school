@@ -19,6 +19,7 @@ $routes->get('gallery',        'Home::gallery');
 $routes->get('downloads',      'Home::downloads');
 $routes->get('academic-info',  'Home::academic_info');
 $routes->get('administration', 'Home::administration');
+$routes->get('page/(:any)',    'Home::page/$1');
 
 // ─── Admin Auth (unprotected) ─────────────────────────────────────────
 $routes->get( 'admin/login',  'Admin\AuthController::login');

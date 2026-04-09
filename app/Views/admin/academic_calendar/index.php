@@ -9,9 +9,9 @@
             <tbody>
             <?php foreach ($events as $e): ?>
             <tr>
-                <td class="fw-500"><?= esc($e['event_title']) ?></td>
+                <td class="fw-500"><?= esc($e['title']) ?></td>
                 <td><span class="badge bg-light text-dark"><?= esc($e['category']) ?></span></td>
-                <td class="small"><?= $e['start_date'] ?> to <?= $e['end_date'] ?></td>
+                <td class="small"><?= esc($e['event_date']) ?> to <?= esc($e['end_date'] ?? '') ?></td>
                 <td>
                     <a href="<?= base_url('admin/academic-calendar/edit/' . $e['id']) ?>" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></a>
                     <form action="<?= base_url('admin/academic-calendar/delete/' . $e['id']) ?>" method="post" class="d-inline">

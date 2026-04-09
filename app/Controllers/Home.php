@@ -38,6 +38,21 @@ class Home extends BaseController
         return $this->render('about', ['title' => 'About Us - Prottasha Academic']);
     }
 
+    public function page($slug)
+    {
+        $pageModel = new \App\Models\PageModel();
+        $pageData = $pageModel->where('slug', $slug)->first();
+        
+        if (!$pageData) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        
+        return $this->render('dynamic_page', [
+            'pageData' => $pageData,
+            'title'    => ld($pageData, 'title') . ' - Prottasha Academic'
+        ]);
+    }
+
     public function teachers()
     {
         $teacherModel = new \App\Models\TeacherModel();
