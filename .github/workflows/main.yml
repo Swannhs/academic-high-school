@@ -1,49 +1,57 @@
-name: Prottasha Portal CI/CD
+name: Full Cloud Orchestration (Terraform + Ansible)
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  test:
-    name: Run Automated Tests
+  infrastructure:
+    name: Provision & Deploy
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_key_name: ${{ secrets.AWS_KEY_NAME }}
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      # 1. Login to AWS using OIDC
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          php-version: '8.2'
-          extensions: intl, gd, zip, mysqli, pdo_mysql, sqlite3
-          coverage: none
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/AcademicPortal-GitHubActions-Role
+          aws-region: us-east-1
 
-      - name: Install Dependencies
-        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: Prepare Environment
-        run: cp env .env
-
-      - name: Run PHPUnit
-        run: vendor/bin/phpunit --no-configuration --do-not-cache-result --colors=always tests
-
-  deploy:
-    name: Deploy to AWS
-    needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v0.1.10
+      # 2. Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd /var/www/html/Academic
-            git pull origin main
-            docker-compose up -d --build
-            docker exec academic-app-1 php spark migrate
-            docker exec academic-app-1 php spark db:seed DummyDataSeeder
+          terraform_wrapper: false
+
+      - name: Terraform Init & Apply
+        working-directory: infrastructure/terraform
+        run: |
+          terraform init
+          terraform apply -auto-approve
+          echo "SERVER_IP=$(terraform output -raw public_ip)" >> $GITHUB_ENV
+
+      # 2. Setup Ansible
+      - name: Install Ansible
+        run: sudo apt-get install -y ansible
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+
+      # 3. Run Ansible Playbook
+      - name: Run Ansible Configuration
+        working-directory: infrastructure/ansible
+        run: |
+          # Generate a temporary inventory with the new IP
+          echo "[academic_server]" > inventory.yml
+          echo "${{ env.SERVER_IP }} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> inventory.yml
+          
+          ansible-playbook -i inventory.yml playbook.yml \
+            --extra-vars "github_username=${{ github.repository_owner }}"

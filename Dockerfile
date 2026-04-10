@@ -22,7 +22,8 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions for CodeIgniter
-RUN chown -R www-data:www-data /var/www/html \
+RUN mkdir -p /var/www/html/writable /var/www/html/public/uploads \
+    && chown -R www-data:www-data /var/www/html \
     && chmod -R 777 /var/www/html/writable \
     && chmod -R 777 /var/www/html/public/uploads
 
