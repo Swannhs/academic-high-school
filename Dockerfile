@@ -10,8 +10,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install intl gd zip mysqli pdo_mysql \
     && git config --global --add safe.directory /var/www/html
 
-RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
-
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
@@ -28,8 +26,18 @@ RUN mkdir -p /var/www/html/writable /var/www/html/public/uploads \
     && chmod -R 777 /var/www/html/writable \
     && chmod -R 777 /var/www/html/public/uploads
 
-RUN a2enmod rewrite
-RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+# Configure Apache: enable mod_rewrite, set DocumentRoot to public/
+RUN a2enmod rewrite \
+    && printf '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html/public\n\
+    <Directory /var/www/html/public>\n\
+        Options -Indexes +FollowSymLinks\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+    ErrorLog ${APACHE_LOG_DIR}/error.log\n\
+    CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
+</VirtualHost>\n' > /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 
