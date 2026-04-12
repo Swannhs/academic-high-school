@@ -10,11 +10,13 @@ class CreateAdminSupportTables extends Migration
     {
         // roles
         $this->forge->addField([
-            'id'          => ['type' => 'INTEGER', 'auto_increment' => true],
-            'name'        => ['type' => 'VARCHAR', 'constraint' => 50],
-            'description' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
-            'created_at'  => ['type' => 'DATETIME', 'null' => true],
-            'updated_at'  => ['type' => 'DATETIME', 'null' => true],
+            'id'           => ['type' => 'INTEGER', 'auto_increment' => true],
+            'name'         => ['type' => 'VARCHAR', 'constraint' => 50],
+            'label'        => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'description'  => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'is_protected' => ['type' => 'INTEGER', 'default' => 0],
+            'created_at'   => ['type' => 'DATETIME', 'null' => true],
+            'updated_at'   => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('roles', true);
